@@ -11,11 +11,33 @@
   %body
   
     - if user_signed_in?
-      = link_to current_user.email, edit_user_registration_path
-      = link_to 'Logout', destroy_user_session_path, :method => :delete
-    - else
-      = link_to "Sign up!", new_user_registration_path
-      = link_to "Log in!", new_user_session_path
-      
-      = yield
+      .header
+        .header-inner
+          .container-fluid
+            = link_to image_tag('logos.png'), root_path
+            = link_to current_user.email, edit_user_registration_path
+            = link_to 'Logout', destroy_user_session_path, :method => :delete
 
+      .container-fluid
+        .row-fluid
+          .span2{:id =>'sidepane'}
+            #navigation
+              %ul.tab
+                %li.active{:id => 'current'}= link_to "Link", '#'
+                %li= link_to "Link" , '#'
+                %li= link_to "Link" , '#'
+                %li= link_to "Link" , '#'                
+          #main.span10
+            #content
+              = yield
+    - else
+      .header-landing 
+      .container-fluid
+        .row-fluid
+          #landing
+            .span6
+              =image_tag('emblem.png', :class => 'emblem')
+            .span6
+              =yield
+    %footer
+      %p &copy; Cola, Loyola, Pineda, Santos

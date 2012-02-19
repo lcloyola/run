@@ -1,0 +1,125 @@
+body {
+  /*padding-top: 140px;*/
+  background: url('../images/bg.png');
+  padding-bottom: 40px;
+  background-color: #D9D9D7;
+  font-family:"Tahoma",Geneva,Kalimati,sans-serif;
+}
+.header,
+.header-landing {
+  /*
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  */
+  font-family:"Century Gothic";
+  height: 70px;
+  background-color: #534741;
+  border-bottom: 15px solid #1CC;
+  margin: 0 auto 20px;
+}
+.header-inner {
+  margin: 0 auto ;
+  width: 80%;
+  padding: 0;
+  color: #FFF;
+}
+.header-inner a,
+.header-inner a:visited {
+  color: #FFF;
+}
+.header-landing {
+  border: none;
+}
+.dash {
+  height: 70px;
+  width: 25%;
+  float: right;
+  -moz-box-shadow: inset -2px -2px 2px 2px #987;
+  -webkit-box-shadow: inset -2px -2px 2px 2px #987;
+  box-shadow: inset -2px -2px 2px 2px #987;
+}
+#landing {
+  height: 380px;
+  padding-top: 30px;
+  margin: auto 0;
+}
+.landing-half {
+  width: 450px;
+  display: inline;
+}
+.emblem {
+  float: right;
+}
+#navigation {
+  margin-top: 5px;
+  padding-top: 40px;
+}
+#navigation ul,
+.tab ul,
+.tab a,
+.tab a:visited {
+  list-style: none;
+  color: #987;
+}
+.tab li {
+  background: rgba(246, 246, 244, .70);
+  margin: 10px 0 5px 20px;
+  font-size: 15px;
+  padding: 15px;
+  text-align: center;
+  -moz-box-shadow: inset -2px 0px 5px #AAA;
+  -webkit-box-shadow: inset -2px 0px 5px #AAA;
+  box-shadow: inset -2px 0px 5px #AAA;
+}
+.active a:link, .active a:visited {
+  color: #1CC;
+  font-weight: bold;
+  font-size: 18px;
+}
+#current {
+  margin-left: 0px;
+  background: rgba(246, 246, 244, .70);
+  -moz-box-shadow: -1px -2px 5px #AAA;
+  -webkit-box-shadow: -1px -2px 5px #AAA;
+  box-shadow: -1px -2px 5px #AAA;
+}
+#subnav {
+  background-color: rgba(0,0,0, .3);
+  width: 100%;
+}
+#subnav ul,
+#subnav li {
+  list-style: none;
+  display: inline;
+  color: #987;
+}
+#main {
+  margin-left: 0;
+}
+#content {
+  background: rgba(246, 246, 244, .70);
+  min-height: 400px;
+  padding: 20px 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: -1px -2px 5px #AAA;
+  -webkit-box-shadow: -1px -2px 5px #AAA;
+  box-shadow: -1px -2px 5px #AAA;
+}
+footer p{
+  color: #FFF;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+input,
+input[type="password"],
+input[type="text"] {
+  height: 35px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
