@@ -34,10 +34,11 @@
       .header-landing 
       .container-fluid
         .row-fluid
-          #landing
-            .span6
+          .container_16{:id => 'landing'}
+            .grid_8
               =image_tag('emblem.png', :class => 'emblem')
-            .span6
+            .grid_8{:id => 'landing-right'}
               =yield
+            .clear
     %footer
       %p &copy; Cola, Loyola, Pineda, Santos

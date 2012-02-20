@@ -1,5 +1,7 @@
-<h1>RUN</h1>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-stacked"}) do |f| %>
+  <h1 style="width: 250px; text-align: center; color: #777; font-size: 40px; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);">R.U.N.</h1>
+  <h1 style="width: 250px; text-align: center; color: #444; font-size: 15px;">Runners' Ultimate Notebook</h1>
+  <br>
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
@@ -7,10 +9,12 @@
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <br>
+    <div><%= f.check_box :remember_me%><b>Remember me</b>
+    <%= f.submit "Sign in", :class=>'button-gray'  %></div>
   <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
 <% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<hr>
+<div class="center">
+  <%= render :partial => "devise/shared/links" %>
+</div>
