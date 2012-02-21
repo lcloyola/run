@@ -1,0 +1,75 @@
+@import "variables"
+$footer_height: 20px
+$tab_and_content_bg: white
+
+/* Sticky footer: http://www.cssstickyfooter.com/using-sticky-footer-code.html */
+
+html, body
+  height: 100%
+
+#wrap
+  min-height: 100%
+
+#inner-wrap
+  overflow: auto
+  padding-bottom: $footer_height  /* must be same height as the footer */
+
+.footer
+  position: relative
+  margin-top: -$footer_height /* negative value of footer height */
+  height: $footer_height
+  clear: both
+
+/* End sticky footer */
+
+body
+  background: url(image-path 'bg.png')
+  background-color: #D9D9D7
+  font-family: "PT Sans", "Tahoma","Geneva","Kalimati",sans-serif
+
+.header-landing
+  border: none
+
+.header-landing
+  font-family: "Century Gothic", serif
+  height: 70px
+  background-color: #534741
+  border-bottom: 15px solid #1CC
+  margin: 0 auto 20px
+
+#landing
+  height: 380px
+  padding-top: 30px
+
+#landing-right
+  width: 280px
+  background-color: white
+  padding: 30px
+  @include round-corners
+
+.emblem
+  float: right
+
+.center
+  text-align: center
+
+input,
+input[type="password"],
+input[type="text"]
+  height: 33px
+
+input[type="checkbox"]
+  margin: 0 10px
+
+label
+  padding: 0
+  margin: 0
+
+.button-gray
+  font-size: 18px
+  color: black
+  font-weight: bold
+  background-color: white
+  padding: 10px
+  @include trans-gradient
+
