@@ -2,19 +2,20 @@
   <h1 style="width: 250px; text-align: center; color: #777; font-size: 40px; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);">R.U.N.</h1>
   <h1 style="width: 250px; text-align: center; color: #444; font-size: 15px;">Runners' Ultimate Notebook</h1>
   <br>
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-  <br>
-    <div><%= f.check_box :remember_me%><b>Remember me</b>
-    <%= f.submit "Sign in", :class=>'button-gray'  %></div>
+    <div><%= f.check_box :remember_me%><b>Remember me</b></div>
   <% end -%>
+
+  <div class="center"><%= f.submit "Sign in", :class=>'button-gray'%></div>
 <% end %>
 <hr>
 <div class="center">
   <%= render :partial => "devise/shared/links" %>
 </div>
+
