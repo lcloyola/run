@@ -1,8 +1,9 @@
 Run::Application.routes.draw do
-  devise_for :users do
-    root :to => "home#index"
-  end
-  
+  devise_for :users
+
+  match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
+  root :to => "home#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
