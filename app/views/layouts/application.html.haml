@@ -2,52 +2,40 @@
   %head
     %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html' }
     %meta{ :name => 'robots', :content => 'index, follow' }
-    %link{ :href => 'http://fonts.googleapis.com/css?family=Comfortaa|Convergence', :rel => 'stylesheet', :type => 'text/css' }
+    %link{ :href => 'http://fonts.googleapis.com/css?family=PT+Sans', :rel => 'stylesheet', :type => 'text/css' }
+    %title Run
 
-    = stylesheet_link_tag "application", :media => "screen"
+    = stylesheet_link_tag "application", media: "screen"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
-  
-    - if user_signed_in?
+    #wrap.container-fluid
       .header
         .header-inner
-          .container-fluid
-            = link_to image_tag('logos.png'), root_path
-            .dash
-              = image_tag('a.png', :style => 'width: 40px; height: 40px; vertical-align: middle;')
-              &nbsp;
-              = link_to current_user.email, edit_user_registration_path
-              = link_to '| Logout', destroy_user_session_path, :method => :delete
+          = link_to image_tag('logos.png'), root_path
+          .dash
+            = image_tag('a.png', :style => 'width: 40px; height: 40px; vertical-align: middle;')
+            &nbsp;
+            = link_to current_user.email, edit_user_registration_path
+            = link_to '| Logout', destroy_user_session_path, :method => :delete
+      #inner-wrap.container_16
+        #topnav.grid_16
+          #navigation
+            %ul.tab
+              - if current_user.coach
+                %li.active#current= link_to "Training Management"
+                %li= link_to "Athlete Performance"
+                %li= link_to "Athlete Accounts"
+                %li= link_to "Performance"
+                %li= link_to "Profile"
+              - else
+                %li= link_to "AAAAAthlete"
 
-      .container-fluid
-        .container_16                             
-          #main.grid_16
-            #content
-              = yield
-        .container_16
-          .grid_16{:id =>'topnav'}
-            #navigation
-              %ul.tab
-                - if current_user.coach
-                  %li.active{:id => 'current'}= link_to "Training Management" , '#'
-                  %li= link_to "Athelete Performance" , '#'
-                  %li= link_to "Athlete Accounts" , '#'
-                  %li= link_to "Performance" , '#'
-                  %li= link_to "Profile" , '#'
-                - else
-                  %li= link_to "AAAAAthlete" , '#'
+        #main.grid_16
+          #content
+            = yield
 
-    - else
-      .header-landing 
-      .container-fluid
-        .row-fluid
-          .container_16{:id => 'landing'}
-            .grid_8
-              =image_tag('emblem.png', :class => 'emblem')
-            .grid_8{:id => 'landing-right'}
-              =yield
-            .clear
-    %footer
-      %p &copy; Cola, Loyola, Pineda, Santos
+    %footer.footer
+      .center &copy; #{Time.now.year} Cola, Loyola, Pineda, Santos
+

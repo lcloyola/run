@@ -5,8 +5,7 @@
  *= require "960"
  *= require "bootstrap"
  *= require "bootstrap_responsive"
- *= require "style"
+ *= require "landing_style"
  *= require_self
- *= require_tree .
 */
 

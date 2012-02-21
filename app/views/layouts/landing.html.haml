@@ -1,0 +1,25 @@
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+  %head
+    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html' }
+    %meta{ :name => 'robots', :content => 'index, follow' }
+    %link{ :href => 'http://fonts.googleapis.com/css?family=PT+Sans', :rel => 'stylesheet', :type => 'text/css' }
+    %title Run
+
+    = stylesheet_link_tag "landing", media: "screen"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .header-landing
+    #wrap.container-fluid
+      #inner-wrap.row-fluid
+        #landing.container_16
+          .grid_8
+            = image_tag 'emblem.png', class: 'emblem'
+          #landing-right.grid_8
+            = yield
+          .clear
+
+    %footer.footer
+      .center &copy; #{Time.now.year} Cola, Loyola, Pineda, Santos
+
