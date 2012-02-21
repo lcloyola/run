@@ -25,7 +25,7 @@
             %ul.tab
               - if current_user.coach
                 %li.active#current= link_to "Training Management"
-                %li= link_to "Athlete Performance"
+                %li= link_to "Athlete Management", '/users/create_athlete'
                 %li= link_to "Performance"
                 %li= link_to "Profile"
               - else
