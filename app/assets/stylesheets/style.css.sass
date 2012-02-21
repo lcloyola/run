@@ -1,0 +1,145 @@
+@import "variables"
+
+$footer_height: 20px
+$tab_and_content_bg: white
+
+/* Sticky footer: http://www.cssstickyfooter.com/using-sticky-footer-code.html */
+
+html, body
+  height: 100%
+
+#wrap
+  min-height: 100%
+
+#inner-wrap
+  overflow: auto
+  padding-bottom: $footer_height  /* must be same height as the footer */
+
+.footer
+  position: relative
+  margin-top: -$footer_height /* negative value of footer height */
+  height: $footer_height
+  clear: both
+
+/* End sticky footer */
+
+.container-fluid
+  padding: 0
+
+body
+  background: url(image-path 'bg.png')
+  background-color: #D9D9D7
+  font-family: "PT Sans", "Tahoma","Geneva","Kalimati",sans-serif
+
+.header
+  font-family: "Century Gothic", serif
+  height: 70px
+  background-color: #534741
+  border-bottom: 15px solid #1CC
+  margin: 0 auto 20px
+
+  .header-inner
+    margin: 0 auto
+    width: 80%
+    padding: 0
+    color: white
+    a, a:visited
+      color: white
+
+.dash
+  height: 45px
+  float: right
+  padding: 10px 20px
+
+#topnav
+  position: absolute
+  top: 67px
+
+#navigation
+  margin-top: 5px
+  padding-top: 40px
+  ul
+    color: #987
+    list-style: none
+
+ul.tab
+  list-style: none
+  li
+    @include inset_box_shadow(#eee, 0, -3px, 5px)
+    display: inline
+    background-color: $tab_and_content_bg
+    margin: 10px 3px 5px 0
+    font-size: 15px
+    padding: 10px
+    text-align: center
+    color: none
+    a, a:visited
+      color: black
+
+li.active, #current
+  margin-left: 0
+  z-index: 1000
+  @include box_shadow(#ccc, 0, -3px, 5px)
+  border-bottom: 1px solid white
+  a:link, a:visited
+    color: #1CC
+    font-weight: bold
+    font-size: 16px
+
+#subnav
+  background-color: rgba(0,0,0, .3)
+  width: 100%
+  ul, li
+    list-style: none
+    display: inline
+    color: #987
+
+#content
+  background-color: $tab_and_content_bg
+  min-height: 400px
+  padding: 20px 20px
+  margin-top: 35px
+  @include round-corners(10px)
+  @include box_shadow(#AAA, -1px, 2px, 5px)
+
+.footer
+  background-color: white
+  border-top: 2px solid (#d9d9d7 - 20)
+  p
+    text-align: center
+    font-weight: bold
+    font-size: 15px
+
+/* forms */
+
+input,
+input[type="password"],
+input[type="text"]
+  height: 33px
+  @include round-corners(10px)
+
+input[type="checkbox"]
+  margin: 0 10px
+
+label
+  padding: 0
+  margin: 0
+
+.button-gray
+  background-color: green
+  font-size: 18px
+  color: #333
+  font-weight: bold
+  padding: 10px
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 1%, rgba(0,0,0,0) 28%, rgba(0,0,0,0.34) 100%) /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(0,0,0,0)), color-stop(28%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.34))) /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 1%,rgba(0,0,0,0) 28%,rgba(0,0,0,0.34) 100%) /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 1%,rgba(0,0,0,0) 28%,rgba(0,0,0,0.34) 100%) /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0,0,0,0) 1%,rgba(0,0,0,0) 28%,rgba(0,0,0,0.34) 100%) /* IE10+ */
+  background: linear-gradient(top, rgba(0,0,0,0) 1%,rgba(0,0,0,0) 28%,rgba(0,0,0,0.34) 100%) /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#57000000',GradientType=0 ) /* IE6-9 */
+
+/*  helpers */
+.center
+  text-align: center
+
