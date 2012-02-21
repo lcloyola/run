@@ -30,11 +30,15 @@
           .grid_16{:id =>'topnav'}
             #navigation
               %ul.tab
-                %li.active{:id => 'current'}= link_to "Training Management" , '#'
-                %li= link_to "Athelete Performance" , '#'
-                %li= link_to "Athlete Accounts" , '#'
-                %li= link_to "Performance" , '#'
-                %li= link_to "Profile" , '#'
+                - if current_user.coach
+                  %li.active{:id => 'current'}= link_to "Training Management" , '#'
+                  %li= link_to "Athelete Performance" , '#'
+                  %li= link_to "Athlete Accounts" , '#'
+                  %li= link_to "Performance" , '#'
+                  %li= link_to "Profile" , '#'
+                - else
+                  %li= link_to "AAAAAthlete" , '#'
+
     - else
       .header-landing 
       .container-fluid
