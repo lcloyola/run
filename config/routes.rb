@@ -19,6 +19,8 @@ Run::Application.routes.draw do
   match '/users/athlete_overall' => 'users#athlete_overall'
   match '/users/athlete_session' => 'users#athlete_session'
   match '/users/athlete_logs' => 'users#athlete_logs'
+  match '/users/request' => 'users#request'
+  match '/users/edit_profile' => 'users#edit_profile'  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

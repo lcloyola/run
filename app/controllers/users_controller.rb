@@ -98,5 +98,8 @@ class UsersController < ApplicationController
     @title = 'Performance'
   end
 
+  def edit_profile
+    @title = 'Profile'
+  end
 
 end

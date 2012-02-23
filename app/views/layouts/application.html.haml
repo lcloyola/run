@@ -57,6 +57,10 @@
                     %li.active#current= link_to "Performance", '/users/athlete_overall'
                   - else
                     %li= link_to "Performance", '/users/athlete_overall'
+                - if @title == "Profile"
+                  %li.active#current= link_to "Profile", '/users/edit_profile'
+                - else
+                  %li= link_to "Profile", '/users/edit_profile'
           #main.span10
             #content
               = yield

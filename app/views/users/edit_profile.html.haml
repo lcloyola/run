@@ -1,0 +1,26 @@
+.container-fluid
+  .row-fluid
+  #athletebox.span9
+    =form_for(@athlete, :as => 'user', :url => 'create_team', :html => {:class=>"form-stacked"}) do |f|
+      - if current_user.coach
+        = image_tag('smiley.jpg', :style => "width: 150px; height: 150px; vertical-align: middle;")
+      - else
+        = image_tag('hotsmiley.gif', :style => "width: 150px; height: 150px; vertical-align: middle;")
+      %p= link_to 'Change Image', '#'
+      .field      
+        = f.label :name
+        = f.date_select :email
+      .field      
+        = f.label :Birthday
+        = f.date_select :created_at
+      .field
+        = f.label :Gender
+        = f.select :email, [['Male','Agility'],['Female','Endurance'],]
+      .field
+        = f.label :About_me
+        = f.text_area :email, :style => "height: 80px"
+      %br
+      .actions
+        = f.submit "Update Profile", :class=> 'button-gray'
+
+  #a{:style=>"clear:both"}
