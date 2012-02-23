@@ -1,0 +1,48 @@
+.container-fluid
+  .row-fluid
+    #leftpane.span3
+      %h3 Pending Training Logs
+      .brownbox
+        %ul
+          %h4= link_to 'January 3, 2012', '#'
+          %li Albert Einstein
+          %li Isaac Newton
+          %li Nikola Tesla
+          %li Edwin Hubble                    
+          
+          %h4= link_to 'January 5, 2012', '#'
+          %li Isaac Newton
+          %li Niels Bohr
+          
+          %h4= link_to 'January 20, 2012', '#'
+          %li Max Planck
+          %li Alfred Nobel
+        %hr
+        %h3.center= link_to 'More >>', '#'
+    #athletebox.span9
+      =form_for(@athlete, :as => 'user', :url => 'create_team', :html => {:class=>"form-stacked"}) do |f|
+        .field      
+          = f.label :Date
+          = f.date_select :created_at, :start_year => Time.now.year - 25
+        .field
+          = f.label :Select_Template
+          = f.select :email, [['Agility CS-Oval (5-4-3 loops)','Agility'],['Endurance CS-Oval (5-6-3 loops)','Endurance'],['Relay','Relay']]
+        .field
+          = f.label :Select_Team
+          = f.select :email, [['Race Walk','Race Walk'],['Sprint Team','Sprint Team'],['Relay Team','Relay Team']]
+        .field      
+          = f.label :Tag_Athletes
+        %select{:id=>"countries", :class=>"multiselect", :multiple=>"multiple", :name=>"countries[]"}
+          %option{:value => 'Albert Einsten'}= "Albert Einstein"
+          %option{:value => 'Albert as'}= "Isaac Newton"
+          %option{:value => 'Albert sdfa'}= "James Maxwel"
+          %option{:value => 'Albert asd'}= "Nikola Tesla"
+          %option{:value => 'Albert sada'}= "Rene Descartes"
+          %option{:value => 'Albert sada'}= "Edwin Hubble"
+          %option{:value => 'Albert sada'}= "Niels Bohr"
+        
+        %br
+        .actions
+          = f.submit "Create Training Session", :class=> 'button-gray'
+
+    #a{:style=>"clear:both"}

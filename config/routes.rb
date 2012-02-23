@@ -10,6 +10,10 @@ Run::Application.routes.draw do
   match '/users/view_template' => 'users#view_template'
   match '/users/edit_template' => 'users#edit_template'
   match '/users/create_template' => 'users#create_template'  
+  match '/users/create_session' => 'users#create_session'
+  match '/users/performance_indiv' => 'users#performance_indiv'
+  match '/users/performance_team' => 'users#performance_team'
+  match '/users/performance_logs' => 'users#performance_logs'  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

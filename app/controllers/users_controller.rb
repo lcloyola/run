@@ -46,4 +46,32 @@ class UsersController < ApplicationController
       format.html
     end
   end
+  def create_session
+    @title = 'Session'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def performance_indiv
+    @title = 'Performance'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def performance_team
+    @title = 'Performance'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def performance_logs
+    @title = 'Performance'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
 end

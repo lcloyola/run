@@ -15,7 +15,7 @@
         .header-inner
           = link_to image_tag('logos.png'), root_path
           .dash
-            = image_tag('a.png', :style => 'width: 40px; height: 40px; vertical-align: middle;')
+            = image_tag('smiley.jpg', :style => 'width: 40px; height: 40px; vertical-align: middle;')
             &nbsp;
             = link_to current_user.email, edit_user_registration_path
             = link_to '| Logout', destroy_user_session_path, :method => :delete
@@ -31,17 +31,20 @@
                   - else
                     %li= link_to "Training Templates", '/users/view_template'
 
-                  - if @title == "Training"
-                    %li.active#current= link_to "Training Sessions", '/users/view_template'
+                  - if @title == "Session"
+                    %li.active#current= link_to "Training Sessions", '/users/create_session'
                   - else
-                    %li= link_to "Training Sessions", '/users/view_template'
+                    %li= link_to "Training Sessions", '/users/create_session'
 
                   - if @title == "Athlete"
                     %li.active#current= link_to "Athlete Management", '/users/create_athlete'
                   - else
                     %li= link_to "Athlete Management", '/users/create_athlete'
-                  %li= link_to "Performance"
-                  %li= link_to "Profile"
+                  - if @title == "Performance"
+                    %li.active#current= link_to "Performance", '/users/performance_team'
+                  - else
+                    %li= link_to "Performance", '/users/performance_team'
+
                 - else
                   %li= link_to "New Trainings"
                   %li= link_to "Performance"
