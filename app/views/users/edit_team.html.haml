@@ -1,0 +1,39 @@
+.container-fluid
+  .row-fluid
+    #leftpane.span3
+      #subnav
+        %ul.subtab
+          %li= link_to 'Create Athlete', 'create_athlete'
+          %li#current.active= link_to 'Create Team', 'create_team'
+      .brownbox
+        =form_for(@athlete, :as => 'user', :url => 'create_team', :html => {:class=>"form-stacked"}) do |f|
+          -if @athlete.errors.any?
+            #error_explanation
+              %h2= "#{pluralize(@athlete.errors.count, "error")} prohibited this batch from being saved:"
+              - @athlete.errors.full_messages.each do |msg|
+                %ul
+                  %li= msg
+          %h2 Create Athlete
+          %hr
+          .field
+            = f.label :name
+            = f.text_field :email
+          .actions
+            = f.submit "Add Team", :class=> 'button-gray'
+    
+    #athletebox.span9
+      %h2
+        Walk Team 
+      %form
+        %select{:id=>"countries", :class=>"multiselect", :multiple=>"multiple", :name=>"countries[]"}
+          %option{:value => 'Albert Einsten', :selected => true}= "Albert Einstein"
+          %option{:value => 'Albert as', :selected => true}= "Isaac Newton"
+          %option{:value => 'Albert sdfa', :selected => true}= "James Maxwel"
+          %option{:value => 'Albert asd'}= "Nikola Tesla"
+          %option{:value => 'Albert sada'}= "Rene Descartes"
+          %option{:value => 'Albert sada'}= "Edwin Hubble"
+          %option{:value => 'Albert sada'}= "Niels Bohr"
+
+      %input{:type =>"submit", :class=>'button-gray', :value=>"Update Team"}
+
+    #a{:style=>"clear:both"}

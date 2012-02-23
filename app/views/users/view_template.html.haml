@@ -1,0 +1,67 @@
+.container-fluid
+  .row-fluid
+    %h1 Training Templates
+    %h3= link_to 'Create New', '/users/create_template'
+    %br
+    #athletebox.span10
+      %h2 
+        Endurance Training
+        = link_to '(Edit)', '/users/edit_template'
+      %h3 CS Oval   
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th Name
+          %th Unit
+          %th Sets
+          %th Repetitions per Set
+          %th Interval per Set (mins)
+          %th{:colspan => 3} Action
+        %tbody
+          %tr
+            %td Standard-Pace-Oval
+            %td Loops
+            %td 5
+            %td 3
+            %td 1
+            %td= link_to 'Remove', '#'
+            %td= link_to 'Use', '#'            
+          %tr
+            %td Sprint-Oval
+            %td Loops
+            %td 4
+            %td 4
+            %td 1
+            %td= link_to 'Remove', '#'
+            %td= link_to 'Use', '#'            
+
+      %h2 
+        Agility Test
+        = link_to '(Edit)', '/users/edit_template'
+      %h3 CS Oval
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th Name
+          %th Unit
+          %th Sets
+          %th Repetitions per Set
+          %th Interval per Set (mins)
+          %th{:colspan => 3} Action
+        %tbody
+          %tr
+            %td PLR
+            %td Straight
+            %td 2
+            %td 5
+            %td 2
+            %td= link_to 'Remove', '#'
+            %td= link_to 'Use', '#'            
+          %tr
+            %td Sprint-Walk-Oval
+            %td Loops
+            %td 5
+            %td 6
+            %td .5
+            %td= link_to 'Remove', '#'
+            %td= link_to 'Use', '#'            
+
+    #a{:style=>"clear:both"}
