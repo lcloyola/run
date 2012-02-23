@@ -10,7 +10,7 @@
     = csrf_meta_tags
 
   %body
-    #wrap.container-fluid
+    #wrap
       .header
         .header-inner
           = link_to image_tag('logos.png'), root_path
@@ -19,22 +19,35 @@
             &nbsp;
             = link_to current_user.email, edit_user_registration_path
             = link_to '| Logout', destroy_user_session_path, :method => :delete
-      #inner-wrap.container_16
-        #topnav.grid_16
-          #navigation
-            %ul.tab
-              - if current_user.coach
-                %li.active#current= link_to "Training Management"
-                %li= link_to "Athlete Management", '/users/create_athlete'
-                %li= link_to "Performance"
-                %li= link_to "Profile"
-              - else
-                %li= link_to "New Trainings"
-                %li= link_to "Performance"
 
-        #main.grid_16
-          #content
-            = yield
+      .container-fluid
+        .row-fluid
+          #sidepane.span2
+            #navigation
+              %ul.tab
+                - if current_user.coach
+                  - if @title == "Template"
+                    %li.active#current= link_to "Training Templates", '/users/view_template'
+                  - else
+                    %li= link_to "Training Templates", '/users/view_template'
+
+                  - if @title == "Training"
+                    %li.active#current= link_to "Training Sessions", '/users/view_template'
+                  - else
+                    %li= link_to "Training Sessions", '/users/view_template'
+
+                  - if @title == "Athlete"
+                    %li.active#current= link_to "Athlete Management", '/users/create_athlete'
+                  - else
+                    %li= link_to "Athlete Management", '/users/create_athlete'
+                  %li= link_to "Performance"
+                  %li= link_to "Profile"
+                - else
+                  %li= link_to "New Trainings"
+                  %li= link_to "Performance"
+          #main.span10
+            #content
+              = yield
 
     %footer.footer
       .center &copy; #{Time.now.year} Cola, Loyola, Pineda, Santos

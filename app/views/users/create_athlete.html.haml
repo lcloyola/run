@@ -1,32 +1,81 @@
-#subnav
-  %ul.subtab
-    %li#current.active= link_to 'Create Athlete', 'create_athlete'
-    %li= link_to 'Create Team', 'create_team'
-.brownbox
-  =form_for(@athlete, :as => 'user', :url => 'create_athlete', :html => {:class=>"form-stacked"}) do |f|
-    -if @athlete.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@athlete.errors.count, "error")} prohibited this batch from being saved:"
-        - @athlete.errors.full_messages.each do |msg|
-          %ul
-            %li= msg
-    %h2 Create Athlete
-    %hr
-    .field
-      = f.label :email
-      = f.email_field :email
-    .field
-      =f.label :password
-      = f.password_field :password
-    .field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
-    %br
-    .actions
-      = f.submit "Add Athlete", :class=> 'button-gray'
-
-#athletebox
-  %table
-    %thead
-    %tbody
-#a{:style=>"clear:both"}
+.container-fluid
+  .row-fluid
+    #leftpane.span3
+      #subnav
+        %ul.subtab
+          %li#current.active= link_to 'Create Athlete', 'create_athlete'
+          %li= link_to 'Create Team', 'create_team'
+      .brownbox
+        =form_for(@athlete, :as => 'user', :url => 'create_athlete', :html => {:class=>"form-stacked"}) do |f|
+          -if @athlete.errors.any?
+            #error_explanation
+              %h2= "#{pluralize(@athlete.errors.count, "error")} prohibited this batch from being saved:"
+              - @athlete.errors.full_messages.each do |msg|
+                %ul
+                  %li= msg
+          %h2 Create Athlete
+          %hr
+          .field
+            = f.label :email
+            = f.email_field :email
+          .field
+            =f.label :password
+            = f.password_field :password
+          .field
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
+          %br
+          .actions
+            = f.submit "Add Athlete", :class=> 'button-gray'
+    
+    #athletebox.span9
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th Last
+          %th First
+          %th Teams
+          %th{:colspan => 3} Action
+        %tbody
+          %tr
+            %td Einstein
+            %td Albert
+            %td Walk Team
+            %td= link_to 'Profile', '#'
+            %td= link_to 'Performance', '#'            
+          %tr
+            %td Maxwel
+            %td James
+            %td Walk Team
+            %td= link_to 'Profile', '#'
+            %td= link_to 'Performance', '#'            
+          %tr
+            %td Newton
+            %td Isaac
+            %td Walk Team
+            %td= link_to 'Profile', '#'
+            %td= link_to 'Performance', '#'                        
+          %tr
+            %td Darwin
+            %td Charles
+            %td Walk Team
+            %td= link_to 'Profile', '#'
+            %td= link_to 'Performance', '#'                        
+          %tr
+            %td Tesla
+            %td Nikola
+            %td Sprint Team
+            %td= link_to 'Profile', '#'
+            %td= link_to 'Performance', '#'                        
+          %tr
+            %td Descartes
+            %td Rene
+            %td Sprint Team
+            %td= link_to 'Profile', '#'
+            %td= link_to 'Performance', '#'                        
+          %tr
+            %td Curie
+            %td Marie
+            %td Sprint Team
+            %td= link_to 'Profile', '#'
+            %td= link_to 'Performance', '#'                        
+    #a{:style=>"clear:both"}
