@@ -13,7 +13,12 @@ Run::Application.routes.draw do
   match '/users/create_session' => 'users#create_session'
   match '/users/performance_indiv' => 'users#performance_indiv'
   match '/users/performance_team' => 'users#performance_team'
-  match '/users/performance_logs' => 'users#performance_logs'  
+  match '/users/performance_logs' => 'users#performance_logs'
+  match '/users/pending' => 'users#pending'
+  match '/users/fillout' => 'users#fillout'            
+  match '/users/athlete_overall' => 'users#athlete_overall'
+  match '/users/athlete_session' => 'users#athlete_session'
+  match '/users/athlete_logs' => 'users#athlete_logs'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

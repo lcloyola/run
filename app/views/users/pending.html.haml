@@ -1,0 +1,31 @@
+.container-fluid
+  .row-fluid
+    #athletebox.span9
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th Name
+          %th Date
+          %th Repetitions
+          %th Sets
+          %th Intervals          
+          %th Unit          
+          %th Action
+        %tbody
+          %tr
+            %td Endurance - CS Oval
+            %td January 21
+            %td 5
+            %td 4
+            %td 1 minute
+            %td loops
+            %td= link_to 'Update', '/users/fillout'
+          %tr
+            %td Endurance - CS Oval
+            %td January 24            
+            %td 5
+            %td 4
+            %td 1 minute
+            %td loops
+            %td= link_to 'Update', '/users/fillout'            
+
+    #a{:style=>"clear:both"}

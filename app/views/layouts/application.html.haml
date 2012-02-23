@@ -15,7 +15,10 @@
         .header-inner
           = link_to image_tag('logos.png'), root_path
           .dash
-            = image_tag('smiley.jpg', :style => 'width: 40px; height: 40px; vertical-align: middle;')
+            - if current_user.coach
+              = image_tag('smiley.jpg', :style => 'width: 40px; height: 40px; vertical-align: middle;')
+            -else
+              = image_tag('hotsmiley.gif', :style => 'width: 40px; height: 40px; vertical-align: middle;')
             &nbsp;
             = link_to current_user.email, edit_user_registration_path
             = link_to '| Logout', destroy_user_session_path, :method => :delete
@@ -46,8 +49,14 @@
                     %li= link_to "Performance", '/users/performance_team'
 
                 - else
-                  %li= link_to "New Trainings"
-                  %li= link_to "Performance"
+                  - if @title == "Pending"
+                    %li.active.athlete#current= link_to "New Trainings", '/users/pending'
+                  - else
+                    %li= link_to "New Trainings", '/users/pending'
+                  - if @title == "Performance"
+                    %li.active#current= link_to "Performance", '/users/athlete_overall'
+                  - else
+                    %li= link_to "Performance", '/users/athlete_overall'
           #main.span10
             #content
               = yield

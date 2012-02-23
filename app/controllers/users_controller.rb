@@ -74,4 +74,29 @@ class UsersController < ApplicationController
       format.html
     end
   end
+  def pending
+    @title = 'Pending'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end  
+  def fillout
+    @title = 'Pending'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end  
+  def athlete_logs
+    @title = 'Performance'
+  end
+  def athlete_overall
+    @title = 'Performance'
+  end
+  def athlete_session
+    @title = 'Performance'
+  end
+
+
 end

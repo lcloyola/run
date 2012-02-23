@@ -75,7 +75,7 @@ ul.tab
     a, a:visited
       color: #534741
 
-li.active, #current
+li.active, #current, li.active.athlete
   margin-left: 0
   z-index: 1000
   @include box_shadow(#ccc, 0, -3px, 5px)
@@ -84,7 +84,9 @@ li.active, #current
     color: #01939A
     font-weight: bold
     font-size: 20px
-
+li.active.athlete
+  a:link, a:visited
+    color: #FFB000  
 #subnav
   padding: 5px 0 0 0
   ul
