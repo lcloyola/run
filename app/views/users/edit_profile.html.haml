@@ -9,10 +9,10 @@
       %p= link_to 'Change Image', '#'
       .field      
         = f.label :name
-        = f.date_select :email
+        = f.text_field :email
       .field      
         = f.label :Birthday
-        = f.date_select :created_at
+        = f.text_field :name, :id => 'datepicker'
       .field
         = f.label :Gender
         = f.select :email, [['Male','Agility'],['Female','Endurance'],]

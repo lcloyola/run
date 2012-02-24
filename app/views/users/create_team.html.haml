@@ -3,8 +3,8 @@
     #leftpane.span3
       #subnav
         %ul.subtab
-          %li= link_to 'Create Athlete', 'create_athlete'
-          %li#current.active= link_to 'Create Team', 'create_team'
+          %li= link_to 'Athlete', 'create_athlete'
+          %li#current.active= link_to 'Team', 'create_team'
       .brownbox
         =form_for(@athlete, :as => 'user', :url => 'create_team', :html => {:class=>"form-stacked"}) do |f|
           -if @athlete.errors.any?

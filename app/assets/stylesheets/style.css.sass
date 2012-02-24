@@ -58,6 +58,7 @@ body
 #navigation
   margin-top: 0
   padding-top: 25px
+  font: italic 500 14px "Century Gothic","Avant Garde"
   ul
     color: #987
     list-style: none
@@ -67,16 +68,17 @@ ul.tab
   li
     @include inset_box_shadow(#eee, 0, -3px, 5px)
     background-color: $tab_and_content_bg
-    margin: 10px 0 5px 0
-    font-size: 15px
+    margin: 0 0 4px 20px
+    font: italic 500 14px "Century Gothic","Avant Garde"
     padding: 10px
-    text-align: center
+    text-align: left
+    line-height: 100%
     color: none
     a, a:visited
       color: #534741
 
 li.active, #current, li.active.athlete
-  margin-left: 0
+  margin: 0 0 4px 0
   z-index: 1000
   @include box_shadow(#ccc, 0, -3px, 5px)
   border-right: 1px solid white
@@ -126,6 +128,9 @@ li.subactive, #current
   @include box_shadow(#AAA, -1px, 2px, 5px)
 #main
   margin-left: 0
+  position: absolute
+  left: 160px
+  top: 60px
 #leftpane
   marign-left: 0
   padding-left: 0
@@ -169,6 +174,8 @@ input[type="text"]
 input[type="checkbox"]
   margin: 0 10px
 
+table
+  padding-left: 15px
 label
   padding: 0
   margin: 0

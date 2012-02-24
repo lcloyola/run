@@ -4,7 +4,7 @@
       %h3 Pending Training Logs
       .brownbox
         %ul
-          %h4= link_to 'January 3, 2012', '#'
+          %h4= link_to 'January 3, 2012', '/users/pending'
           %li Albert Einstein
           %li Isaac Newton
           %li Nikola Tesla
@@ -23,7 +23,7 @@
       =form_for(@athlete, :as => 'user', :url => 'create_team', :html => {:class=>"form-stacked"}) do |f|
         .field      
           = f.label :Date
-          = f.date_select :created_at, :start_year => Time.now.year - 25
+          = f.text_field :email, :id => 'datepicker' 
         .field
           = f.label :Select_Template
           = f.select :email, [['Agility CS-Oval (5-4-3 loops)','Agility'],['Endurance CS-Oval (5-6-3 loops)','Endurance'],['Relay','Relay']]

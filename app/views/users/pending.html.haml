@@ -1,8 +1,10 @@
 .container-fluid
   .row-fluid
     #athletebox.span9
+      %h1 Pending Training Sessions
       %table{:id => "sortable", :class => "zebra-striped tablesorter"}
         %tr
+          %th Athlete
           %th Name
           %th Date
           %th Repetitions
@@ -12,6 +14,7 @@
           %th Action
         %tbody
           %tr
+            %td Albert Einstein
             %td Endurance - CS Oval
             %td January 21
             %td 5
@@ -20,6 +23,7 @@
             %td loops
             %td= link_to 'Update', '/users/fillout'
           %tr
+            %td Isaac Neston
             %td Endurance - CS Oval
             %td January 24            
             %td 5

@@ -1,6 +1,5 @@
 <div class="center">
 <h1 style="text-align: center; color: #777; font-size: 40px; text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);">R.U.N.</h1>
-<h1 style="text-align: center; color: #444; font-size: 15px;">Runners' Ultimate Notebook</h1>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-stacked"}) do |f| %>
   <br>
   <div>
@@ -18,5 +17,6 @@
 <hr>
 <div class="center">
   <%= render :partial => "devise/shared/links" %>
+  <%= link_to "Request account as athlete", "/users/request"%>
 </div>
 
