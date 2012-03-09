@@ -15,7 +15,7 @@
         .header-inner
           = link_to image_tag('logos.png'), root_path
           .dash
-            - if current_user.coach
+            - if current_user.is_coach
               = image_tag('smiley.jpg', :style => 'width: 40px; height: 40px; vertical-align: middle;')
             -else
               = image_tag('hotsmiley.gif', :style => 'width: 40px; height: 40px; vertical-align: middle;')
@@ -28,7 +28,7 @@
           #sidepane.span2
             #navigation
               %ul.tab
-                - if current_user.coach
+                - if current_user.is_coach
                   - if @title == "Template"
                     %li.active#current= link_to "Templates", '/users/view_template'
                   - else

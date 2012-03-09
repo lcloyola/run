@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  def request_account
+    @user = User.new
+    respond_to do |format|
+      format.html
+    end
+    
+  end
   def create_athlete
     @title = 'Athlete'
     @athlete = User.new

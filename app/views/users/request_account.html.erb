@@ -1,0 +1,30 @@
+<div class="center">
+<%= form_for(@user, :as => User, :url => registration_path(User), :html => {:class=>"form-stacked"}) do |f| %>
+  <%-if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= "#{pluralize(@schoolyear.errors.count, "error")} prohibited this schoolyear from being saved:" %>
+      <ul>
+        <%= @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <h2>Sign up</h2>
+  <div><br />
+  <%= f.email_field :email, :placeholder => 'email' %></div>
+
+  <div><br />
+  <%= f.password_field :password, :placeholder => 'password' %></div>
+
+  <div><br />
+  <%= f.password_field :password_confirmation, :placeholder => 'confirm password' %></div>
+  <br>
+  <div><%= f.submit "Sign up", :class=> 'button-gray' %></div>
+  <hr>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+
+<% end %>
+
