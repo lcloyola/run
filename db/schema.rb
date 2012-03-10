@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221040641) do
+ActiveRecord::Schema.define(:version => 20120310095955) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",    :null => false
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(:version => 20120221040641) do
     t.boolean  "is_coach",                              :default => true
     t.boolean  "is_athlete",                            :default => false
     t.integer  "coach_id"
+    t.string   "last"
+    t.string   "first"
+    t.string   "middle"
+    t.text     "about"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
