@@ -26,53 +26,5 @@
             = f.submit "Add Athlete", :class=> 'button-gray'
     
     #athletebox.span9
-      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
-        %tr
-          %th Last
-          %th First
-          %th Teams
-          %th{:colspan => 3} Action
-        %tbody
-          %tr
-            %td Einstein
-            %td Albert
-            %td Walk Team
-            %td= link_to 'Profile', '#'
-            %td= link_to 'Performance', '#'            
-          %tr
-            %td Maxwel
-            %td James
-            %td Walk Team
-            %td= link_to 'Profile', '#'
-            %td= link_to 'Performance', '#'            
-          %tr
-            %td Newton
-            %td Isaac
-            %td Walk Team
-            %td= link_to 'Profile', '#'
-            %td= link_to 'Performance', '#'                        
-          %tr
-            %td Darwin
-            %td Charles
-            %td Walk Team
-            %td= link_to 'Profile', '#'
-            %td= link_to 'Performance', '#'                        
-          %tr
-            %td Tesla
-            %td Nikola
-            %td Sprint Team
-            %td= link_to 'Profile', '#'
-            %td= link_to 'Performance', '#'                        
-          %tr
-            %td Descartes
-            %td Rene
-            %td Sprint Team
-            %td= link_to 'Profile', '#'
-            %td= link_to 'Performance', '#'                        
-          %tr
-            %td Curie
-            %td Marie
-            %td Sprint Team
-            %td= link_to 'Profile', '#'
-            %td= link_to 'Performance', '#'                        
+      = render :partial => "/users/my_athletes"
     #a{:style=>"clear:both"}

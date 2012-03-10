@@ -7,6 +7,7 @@ class MyregistrationsController < Devise::RegistrationsController
     super # do original create method
   end
   def create_athlete
+    @title = "Athlete"
     resource = build_resource({})
     respond_with resource
   end

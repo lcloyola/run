@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :is_coach, :is_athlete, :coach_id
 
   scope :coaches, :conditions => ['is_coach = ?', true]
+  def my_athletes
+    return User.where('is_athlete = ? AND coach_id = ?', true, self.id)
+  end
 end
