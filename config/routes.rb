@@ -1,12 +1,12 @@
 Run::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "myregistrations" } do
     match '/users/sign_up/:type' => 'myregistrations#new'
+    match '/users/create_athlete' => 'myregistrations#create_athlete'
   end
 
   match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
   root :to => "home#index"
   
-  match '/users/create_athlete' => 'users#create_athlete'
   match '/users/create_team' => 'users#create_team'
   match '/users/edit_team' => 'users#edit_team'
   match '/users/view_template' => 'users#view_template'
