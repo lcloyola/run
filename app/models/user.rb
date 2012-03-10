@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :coach
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_coach, :is_athlete, :coach_id
+
+  scope :coaches, :conditions => ['is_coach = ?', true]
 end

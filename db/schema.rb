@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120221040641) do
     t.datetime "updated_at"
     t.boolean  "is_coach",                              :default => true
     t.boolean  "is_athlete",                            :default => false
+    t.integer  "coach_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
