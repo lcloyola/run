@@ -4,7 +4,7 @@
       #subnav
         %ul.subtab
           %li#current.active= link_to 'Athlete', 'create_athlete'
-          %li= link_to 'Team', 'create_team'
+          %li= link_to 'Team', '/teams/new'
       .brownbox
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-stacked"}) do |f|
           %h2 Create Athlete

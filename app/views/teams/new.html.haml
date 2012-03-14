@@ -1,5 +1,15 @@
-%h1 New team
-
-= render 'form'
-
+.container-fluid
+  .row-fluid
+    #leftpane.span3
+      #subnav
+        %ul.subtab
+          %li= link_to 'Athlete', '/users/create_athlete'
+          %li#current.active= link_to 'Team', '/teams/new'
+      .brownbox
+        %h2 Create Team
+        %hr
+        = render 'form'
+    #athletebox.span9
+      = render :partial => "list"
+    #a{:style=>"clear:both"}
 = link_to 'Back', teams_path

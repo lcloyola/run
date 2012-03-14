@@ -24,6 +24,8 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
+    @title = 'Athlete'
+    @teams = Team.all
     @team = Team.new
 
     respond_to do |format|
@@ -41,10 +43,11 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(params[:team])
-
+    @team[:user_id] = current_user.id
+    
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { redirect_to '/teams/new', notice: 'Team was successfully created.' }
         format.json { render json: @team, status: :created, location: @team }
       else
         format.html { render action: "new" }

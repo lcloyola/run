@@ -1,4 +1,4 @@
-= form_for @team do |f|
+= form_for @team, :html => {:class=>"form-stacked"} do |f|
   -if @team.errors.any?
     #error_explanation
       %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
@@ -9,8 +9,5 @@
   .field
     = f.label :name
     = f.text_field :name
-  .field
-    = f.label :user
-    = f.text_field :user
   .actions
     = f.submit 'Save'
