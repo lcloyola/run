@@ -1,4 +1,6 @@
 Run::Application.routes.draw do
+  resources :teams
+
   devise_for :users, :controllers => { :registrations => "myregistrations" } do
     match '/users/sign_up/:type' => 'myregistrations#new'
     match '/users/create_athlete' => 'myregistrations#create_athlete'
