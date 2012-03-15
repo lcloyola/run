@@ -9,6 +9,33 @@
 %p
   %b Description:
   = @team.description
+
+%br
 = link_to 'Edit', edit_team_path(@team)
 \|
 = link_to 'Back', teams_path
+%br
+%br
+
+= form_for(@team, :url => join_team_path) do |f|
+  .field
+    = select_tag "athletes[]", options_from_collection_for_select(@athletes, "id","email"), :multiple => true, :class =>"multiselect"
+  %br
+  .actions
+    = f.submit 'Save'
+    
+-unless(@team.athletes.empty?)
+  %table
+    %thead
+      %tr
+        %th Last
+        %th First
+        %th Email
+        %th Action
+    %tbody
+    - @team.members.each do |m|
+      %tr
+        %td= m.user.last
+        %td= m.user.first
+        %td= m.user.email
+        %td= link_to "remove" , "/teams/#{@team.id}/remove_athlete/#{m.user_id}"

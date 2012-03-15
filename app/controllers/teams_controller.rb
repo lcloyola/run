@@ -13,8 +13,10 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @title = 'Athlete'
     @team = Team.find(params[:id])
-
+    @athletes = User.where('coach_id = ?', current_user.id)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }
@@ -81,6 +83,38 @@ class TeamsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to teams_url }
       format.json { head :ok }
+    end
+  end
+  def join
+    @team = Team.find(params[:id])
+    params[:athletes].each do |id|
+       @athlete = User.find(id)
+       #TODO: validate existence
+       join_individual_athlete()
+    end
+    respond_to do |format|
+      format.html {redirect_to Team.find(@team.id) }
+    end
+  end
+  def remove_athlete
+    @team = Team.find(params[:id])
+    @athlete = User.find(params[:user_id])
+    #TODO: validate course, student existence?
+    if @athlete.member?(@team.id)
+      @member = Member.where('team_id = ? and user_id = ?', @team.id, @athlete.id).first
+      unless @member.nil?
+        @member.destroy
+      end
+    end
+    respond_to do |format|
+      format.html {redirect_to @team}
+    end
+  end
+private
+  def join_individual_athlete
+    unless @athlete.member?(@team.id)
+      @membership = Member.new("team_id" => @team.id, "user_id" => @athlete.id)
+      @membership.save
     end
   end
 end

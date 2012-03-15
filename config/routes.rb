@@ -1,5 +1,10 @@
 Run::Application.routes.draw do
-  resources :teams
+  resources :teams do
+    member do
+      put 'join'
+      get 'remove_athlete/:user_id' =>  'teams#remove_athlete'
+    end
+  end
 
   devise_for :users, :controllers => { :registrations => "myregistrations" } do
     match '/users/sign_up/:type' => 'myregistrations#new'

@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
   def my_athletes
     return User.where('is_athlete = ? AND coach_id = ?', true, self.id)
   end
+  def member?(team_id = nil)
+    if Member.where("team_id = ? AND user_id = ?", team_id, self.id).empty?
+      return false
+    end
+    return true
+  end
 end
