@@ -1,20 +1,21 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @team.name
+%h1
+  %b= @team.name
+%h4
+  = link_to 'Edit', edit_team_path(@team)
+  \|
+  = link_to 'Back', teams_path
+%br
 %p
   %b Coach:
-  = @team.user.email
+  %br= @team.user.email
 %p
   %b Description:
-  = @team.description
+  %br= @team.description
 
 %br
-= link_to 'Edit', edit_team_path(@team)
-\|
-= link_to 'Back', teams_path
-%br
+
 %br
 
 = form_for(@team, :url => join_team_path) do |f|

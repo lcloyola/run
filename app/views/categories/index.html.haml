@@ -1,19 +1,20 @@
-%h1 Listing categories
+.container-fluid
+  .row-fluid
+    %h1 Training Type
+    %h3= link_to 'Create New', new_category_path
+    #athletebox.span10
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th Name
+          %th
+          %th Action
+          %th
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @categories.each do |category|
-    %tr
-      %td= category.name
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete
-
+        - @categories.each do |category|
+          %tr
+            %td= category.name
+            %td= link_to 'Show', category
+            %td= link_to 'Edit', edit_category_path(category)
+            %td= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete
 %br
-
-= link_to 'New Category', new_category_path
+#a{:style=>"clear:both"}

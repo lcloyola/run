@@ -2,7 +2,7 @@ class TemplatesController < ApplicationController
   # GET /templates
   # GET /templates.json
   def index
-    @templates = Template.all
+    @categories = Category.where('user_id = ?',current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
