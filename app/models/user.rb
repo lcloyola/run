@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :members, :foreign_key => :user_id, :dependent => :destroy
   has_many :teams, :through => :members, :source => :team, :dependent => :destroy
+  has_many :categories
 
   scope :coaches, :conditions => ['is_coach = ?', true]
   def my_athletes

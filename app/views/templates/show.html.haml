@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @template.name
+%p
+  %b Unit:
+  = @template.unit
+%p
+  %b Sets:
+  = @template.sets
+%p
+  %b Reps:
+  = @template.reps
+%p
+  %b Interval:
+  = @template.interval
+%p
+  %b User:
+  = @template.user
+%p
+  %b Category:
+  = @template.category
+
+= link_to 'Edit', edit_template_path(@template)
+\|
+= link_to 'Back', templates_path

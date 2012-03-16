@@ -1,4 +1,6 @@
 Run::Application.routes.draw do
+  resources :templates
+
   resources :categories
 
   resources :teams do

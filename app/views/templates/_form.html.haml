@@ -1,0 +1,27 @@
+= form_for @template do |f|
+  -if @template.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@template.errors.count, "error")} prohibited this template from being saved:"
+      %ul
+        - @template.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :category
+    = collection_select :template, :category_id, current_user.categories, :id, :name
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :unit
+    = f.text_field :unit
+  .field
+    = f.label :sets
+    = f.number_field :sets
+  .field
+    = f.label :reps
+    = f.number_field :reps
+  .field
+    = f.label :interval
+    = f.number_field :interval
+  .actions
+    = f.submit 'Save'
