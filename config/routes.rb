@@ -1,4 +1,6 @@
 Run::Application.routes.draw do
+  resources :categories
+
   resources :teams do
     member do
       put 'join'
