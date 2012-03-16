@@ -1,4 +1,46 @@
 class UsersController < ApplicationController
+  def about_us
+    @title = 'About Us'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def help
+    @title = 'Help'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def prof_kei
+    @title = 'Kei Cola'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def prof_liz
+    @title = 'Liz Loyola'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def prof_riza
+    @title = 'Riza Pineda'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
+  def prof_ru
+    @title = 'Ru Santos'
+    @athlete = User.new
+    respond_to do |format|
+      format.html
+    end
+  end
   def create_team
     @title = 'Athlete'
     @athlete = User.new

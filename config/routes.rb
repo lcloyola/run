@@ -18,6 +18,12 @@ Run::Application.routes.draw do
   match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
   root :to => "home#index"
   
+  match '/users/prof_kei' => 'users#prof_kei'
+  match '/users/prof_liz' => 'users#prof_liz'
+  match '/users/prof_riza' => 'users#prof_riza'
+  match '/users/prof_ru' => 'users#prof_ru'
+  match '/users/about_us' => 'users#about_us'
+  match '/users/help' => 'users#help'
   match '/users/create_team' => 'users#create_team'
   match '/users/edit_team' => 'users#edit_team'
   match '/users/view_template' => 'users#view_template'

@@ -1,5 +1,5 @@
 %h1 Teams
-%h3= link_to 'Create New', new_team_path
+%h4= link_to 'Create New', new_team_path
 %table
   %tr
     %th Name
@@ -11,7 +11,7 @@
   - @teams.each do |team|
     %tr
       %td= team.name
-      %td= team.user
+      %td= team.user.email
       %td= link_to 'Show', team
       %td= link_to 'Edit', edit_team_path(team)
       %td= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete

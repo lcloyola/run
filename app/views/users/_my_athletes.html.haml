@@ -1,11 +1,13 @@
 - @myathletes = current_user.my_athletes
 - if !@myathletes.nil?
+  %h1   Athletes
   %table{:id => "sortable", :class => "zebra-striped tablesorter"}
     %tr
       %th Last
       %th First
       %th Teams
-      %th{:colspan => 3} Action
+      %th View
+      %th
    
     %tbody
       - @myathletes.each do |athlete|
