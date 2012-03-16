@@ -12,7 +12,6 @@
     <h2>Sign up as athlete</h2>
     <%= f.label :Choose_Coach %>
     <%= collection_select :user, :coach_id, User.coaches, :id, :email %>
-    <%= f.hidden_field(:confirmed, :value => TRUE) %>
     <%= f.hidden_field(:is_athlete, :value => TRUE) %>
     <%= f.hidden_field(:is_coach, :value => FALSE) %>
   <%- else %>
@@ -36,4 +35,3 @@
   </div>
 
 <% end %>
-
