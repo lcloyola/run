@@ -44,6 +44,9 @@ class SessionsController < ApplicationController
       @session = Session.new(params[:session])
       @session[:user_id] = athlete
       @session.save
+      
+      #create sr number of logs
+      
     end      
 
     respond_to do |format|
