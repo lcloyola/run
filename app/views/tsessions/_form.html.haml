@@ -7,16 +7,18 @@
           %li= msg
 
   .field
-    = f.label :trainingday
+    %b= f.label :Training_Day
     = f.text_field :trainingday, :id => 'datepicker'
   .field
-    = f.label :template
+    %b= f.label :Template
     = collection_select :tsession, :template_id, current_user.templates, :id, :name
+  %br
   .field
-    = f.label :athletes
+    %b= f.label :Athletes
     = select_tag "athletes[]", options_from_collection_for_select(current_user.my_athletes, "id","email"), :multiple => true, :class =>"multiselect"
+  %br
   .field
-    = f.label :comments
-    = f.text_area :comments
+    %b= f.label :Comments
+    = f.text_area :comments, :cols=>'30',:rows=>'10'
   .actions
     = f.submit 'Save'

@@ -1,7 +1,19 @@
-%h1 Editing session
-
-= render 'form'
-
-= link_to 'Show', @session
-\|
+.container-fluid
+  .row-fluid
+    #leftpane.span3
+      .brownbox
+        %h3{:style=>"color:white"} Training Sessions
+        %hr
+        %p
+          //- @teams.each do |team|
+          //  = team.name
+          //  = team.user.email
+          //  = link_to 'Show', team
+          //  = link_to 'Edit', edit_team_path(team)
+          //  %td= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete
+    #athletebox.span9
+      %h2 Edit Session
+      %br
+      = render :partial => "form"
+    #a{:style=>"clear:both"}
 = link_to 'Back', tsessions_path

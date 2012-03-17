@@ -1,25 +1,28 @@
-%h1 Listing sessions
+.container-fluid
+  .row-fluid
+    %h1 Sessions
+    %h4= link_to 'New Session', new_tsession_path
+    %br
+    #athletebox.span10
+      %table
+        %tr
+          %th Training Day
+          %th Template
+          %th User
+          %th Comments
+          %th 
+          %th Actions
+          %th
 
-%table
-  %tr
-    %th Trainingday
-    %th Template
-    %th User
-    %th Comments
-    %th
-    %th
-    %th
+        - @sessions.each do |session|
+          %tr
+            %td= session.trainingday
+            %td= session.template.name
+            %td= session.user.email
+            %td= session.comments
+            %td= link_to 'Show', session
+            %td= link_to 'Edit', edit_tsession_path(session)
+            %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
 
-  - @sessions.each do |session|
-    %tr
-      %td= session.trainingday
-      %td= session.template
-      %td= session.user
-      %td= session.comments
-      %td= link_to 'Show', session
-      %td= link_to 'Edit', edit_tsession_path(session)
-      %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Session', new_tsession_path
+      %br
+#a{:style=>"clear:both"}
