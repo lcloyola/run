@@ -1,3 +1,3 @@
 class Log < ActiveRecord::Base
-  belongs_to :session
+  belongs_to :tsession
 end

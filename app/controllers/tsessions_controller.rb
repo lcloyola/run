@@ -1,8 +1,8 @@
-class SessionsController < ApplicationController
+class TsessionsController < ApplicationController
   # GET /sessions
   # GET /sessions.json
   def index
-    @sessions = Session.all
+    @sessions = Tsession.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   # GET /sessions/1
   # GET /sessions/1.json
   def show
-    @session = Session.find(params[:id])
+    @session = Tsession.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
   # GET /sessions/new
   # GET /sessions/new.json
   def new
-    @session = Session.new
+    @session = Tsession.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,14 +34,14 @@ class SessionsController < ApplicationController
 
   # GET /sessions/1/edit
   def edit
-    @session = Session.find(params[:id])
+    @session = Tsession.find(params[:id])
   end
 
   # POST /sessions
   # POST /sessions.json
   def create
     params[:athletes].each do |athlete|
-      @session = Session.new(params[:session])
+      @session = Tsession.new(params[:tsession])
       @session[:user_id] = athlete
       @session.save
       
@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
       for i in 1..@session.template.sets
         for j in 1..@session.template.reps
           @log = Log.new()
-          @log[:session_id] = @session.id
+          @log[:tsession_id] = @session.id
           @log[:set] = i
           @log[:repetition] = j
           @log.save
@@ -67,7 +67,7 @@ class SessionsController < ApplicationController
   # PUT /sessions/1
   # PUT /sessions/1.json
   def update
-    @session = Session.find(params[:id])
+    @session = Tsession.find(params[:id])
 
     respond_to do |format|
       if @session.update_attributes(params[:session])
@@ -83,11 +83,11 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    @session = Session.find(params[:id])
+    @session = Tsession.find(params[:id])
     @session.destroy
 
     respond_to do |format|
-      format.html { redirect_to sessions_url }
+      format.html { redirect_to tsessions_url }
       format.json { head :ok }
     end
   end

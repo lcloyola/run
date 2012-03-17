@@ -1,5 +1,7 @@
 Run::Application.routes.draw do
-  resources :sessions
+  root :to => "home#index"
+  
+  resources :tsessions
 
   resources :templates
 
@@ -18,7 +20,6 @@ Run::Application.routes.draw do
   end
 
   match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
-  root :to => "home#index"
   
   match '/users/prof_kei' => 'users#prof_kei'
   match '/users/prof_liz' => 'users#prof_liz'

@@ -11,7 +11,7 @@
     = f.text_field :trainingday, :id => 'datepicker'
   .field
     = f.label :template
-    = collection_select :session, :template_id, current_user.templates, :id, :name
+    = collection_select :tsession, :template_id, current_user.templates, :id, :name
   .field
     = f.label :athletes
     = select_tag "athletes[]", options_from_collection_for_select(current_user.my_athletes, "id","email"), :multiple => true, :class =>"multiselect"

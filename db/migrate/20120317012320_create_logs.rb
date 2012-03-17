@@ -1,13 +1,13 @@
 class CreateLogs < ActiveRecord::Migration
   def change
     create_table :logs do |t|
-      t.references :session
+      t.references :tsession
       t.integer :set
       t.integer :repetition
       t.integer :value
 
       t.timestamps
     end
-    add_index :logs, :session_id
+    add_index :logs, :tsession_id
   end
 end

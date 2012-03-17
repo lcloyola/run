@@ -17,9 +17,9 @@
       %td= session.user
       %td= session.comments
       %td= link_to 'Show', session
-      %td= link_to 'Edit', edit_session_path(session)
+      %td= link_to 'Edit', edit_tsession_path(session)
       %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Session', new_session_path
+= link_to 'New Session', new_tsession_path
