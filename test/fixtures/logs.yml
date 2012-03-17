@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  session: 
+  set: 1
+  repetition: 1
+  value: 1
+
+two:
+  session: 
+  set: 1
+  repetition: 1
+  value: 1
