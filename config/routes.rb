@@ -1,4 +1,6 @@
 Run::Application.routes.draw do
+  resources :sessions
+
   resources :templates
 
   resources :categories

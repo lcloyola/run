@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   has_many :members, :foreign_key => :user_id, :dependent => :destroy
   has_many :teams, :through => :members, :source => :team, :dependent => :destroy
   has_many :categories
-
+  has_many :sessions
+  has_many :templates
+  
   scope :coaches, :conditions => ['is_coach = ?', true]
   def my_athletes
     return User.where('is_athlete = ? AND coach_id = ?', true, self.id)
