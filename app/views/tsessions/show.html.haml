@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Trainingday:
+  = @session.trainingday
+%p
+  %b Template:
+  = @session.template
+%p
+  %b User:
+  = @session.user
+%p
+  %b Comments:
+  = @session.comments
+
+= link_to 'Edit', edit_tsession_path(@session)
+\|
+= link_to 'Back', tsessions_path

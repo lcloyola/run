@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316160713) do
+ActiveRecord::Schema.define(:version => 20120317012320) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20120316160713) do
   end
 
   add_index "categories", ["user_id"], :name => "index_categories_on_user_id"
+
+  create_table "logs", :force => true do |t|
+    t.integer  "tsession_id"
+    t.integer  "set"
+    t.integer  "repetition"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logs", ["tsession_id"], :name => "index_logs_on_tsession_id"
 
   create_table "members", :force => true do |t|
     t.integer  "team_id"
@@ -56,6 +67,18 @@ ActiveRecord::Schema.define(:version => 20120316160713) do
 
   add_index "templates", ["category_id"], :name => "index_templates_on_category_id"
   add_index "templates", ["user_id"], :name => "index_templates_on_user_id"
+
+  create_table "tsessions", :force => true do |t|
+    t.date     "trainingday"
+    t.integer  "template_id"
+    t.integer  "user_id"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tsessions", ["template_id"], :name => "index_tsessions_on_template_id"
+  add_index "tsessions", ["user_id"], :name => "index_tsessions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",    :null => false

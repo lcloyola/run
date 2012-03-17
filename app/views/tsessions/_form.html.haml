@@ -1,0 +1,22 @@
+= form_for @session do |f|
+  -if @session.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@session.errors.count, "error")} prohibited this session from being saved:"
+      %ul
+        - @session.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :trainingday
+    = f.text_field :trainingday, :id => 'datepicker'
+  .field
+    = f.label :template
+    = collection_select :tsession, :template_id, current_user.templates, :id, :name
+  .field
+    = f.label :athletes
+    = select_tag "athletes[]", options_from_collection_for_select(current_user.my_athletes, "id","email"), :multiple => true, :class =>"multiselect"
+  .field
+    = f.label :comments
+    = f.text_area :comments
+  .actions
+    = f.submit 'Save'

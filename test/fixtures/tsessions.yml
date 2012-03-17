@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trainingday: 2012-03-17
+  template: 
+  user: 
+  comments: MyText
+
+two:
+  trainingday: 2012-03-17
+  template: 
+  user: 
+  comments: MyText
