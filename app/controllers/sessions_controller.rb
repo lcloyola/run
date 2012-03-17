@@ -46,8 +46,17 @@ class SessionsController < ApplicationController
       @session.save
       
       #create sr number of logs
+      for i in 1..@session.template.sets
+        for j in 1..@session.template.reps
+          @log = Log.new()
+          @log[:session_id] = @session.id
+          @log[:set] = i
+          @log[:repetition] = j
+          @log.save
+        end
+      end
       
-    end      
+    end
 
     respond_to do |format|
         format.html { redirect_to @session, notice: 'Session was successfully created.' }
