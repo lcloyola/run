@@ -8,14 +8,26 @@
   \|
   = link_to 'Back', tsessions_path
 %br
+%h4= @session.template.name
 %p
-  %b Template:
-  = @session.template.name
+  %br
+  %b Unit:
+  = @session.template.unit
+  %br
+  %b Sets:
+  = @session.template.sets
+  %br
+  %b Repetitions:
+  = @session.template.reps
+  %br
+  %b Intervals
+  = @session.template.interval
 %p
   %b User:
   = @session.user.email
 %p
   %b Comments:
   = @session.comments
+%br
 
 

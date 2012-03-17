@@ -5,6 +5,7 @@
     %tr
       %th Last
       %th First
+      %th Email Address
       %th Teams
       %th View
       %th
@@ -15,5 +16,8 @@
           %td= athlete.last
           %td= athlete.first
           %td= athlete.email
+          %td
+            - athlete.teams.each do |team|
+              = team.name 
           %td= link_to 'Profile', '#'
           %td= link_to 'Performance', '#'            
