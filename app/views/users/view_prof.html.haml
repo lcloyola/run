@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%h2
+  %b= current_user.fullname
+%p
+  %br
+  Insert picture here
+  %br
+  %br
+  %b Birthday:
+  %br birthday
+  %br
+  %b Email Address:
+  %br= current_user.email
+  %br
+  %b About Me:
+  %br= current_user.about
+%h5= link_to 'Edit', '/users/edit'

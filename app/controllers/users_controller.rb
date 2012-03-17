@@ -9,6 +9,13 @@ class UsersController < ApplicationController
   def help
     @title = 'Help'
     @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def help
+    @title = 'View Profile'
+    @athlete = User.new
     respond_to do |format|
       format.html
     end

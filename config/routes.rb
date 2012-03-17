@@ -22,6 +22,7 @@ Run::Application.routes.draw do
   match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
   
   match '/users/prof_kei' => 'users#prof_kei'
+  match '/users/view_prof' => 'users#view_prof'
   match '/users/prof_liz' => 'users#prof_liz'
   match '/users/prof_riza' => 'users#prof_riza'
   match '/users/prof_ru' => 'users#prof_ru'

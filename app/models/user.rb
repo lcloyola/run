@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_coach, :is_athlete, :coach_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_coach, :is_athlete, :coach_id, :first, :last
 
   has_many :members, :foreign_key => :user_id, :dependent => :destroy
   has_many :teams, :through => :members, :source => :team, :dependent => :destroy
@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   scope :coaches, :conditions => ['is_coach = ?', true]
   def my_athletes
     return User.where('is_athlete = ? AND coach_id = ?', true, self.id)
+  end
+  def fullname
+    return "#{self.last}, #{self.first}"
   end
   def member?(team_id = nil)
     if Member.where("team_id = ? AND user_id = ?", team_id, self.id).empty?
