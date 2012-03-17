@@ -30,14 +30,14 @@
               %ul.tab
                 - if current_user.is_coach
                   - if @title == "Template"
-                    %li.active#current= link_to "Templates", '/users/view_template'
+                    %li.active#current= link_to "Templates", '/templates'
                   - else
-                    %li= link_to "Templates", '/users/view_template'
+                    %li= link_to "Templates", '/templates'
 
                   - if @title == "Session"
-                    %li.active#current= link_to "Sessions", '/users/create_session'
+                    %li.active#current= link_to "Sessions", '/tsessions'
                   - else
-                    %li= link_to "Sessions", '/users/create_session'
+                    %li= link_to "Sessions", '/tsessions'
 
                   - if @title == "Athlete"
                     %li.active#current= link_to "Athletes", '/users/create_athlete'
@@ -61,7 +61,7 @@
                   %li.active#current= link_to "Profile", '/users/edit_profile'
                 - else
                   %li= link_to "Profile", '/users/edit_profile'
-                %li= link_to "Help", ''
+                %li= link_to "Help", '/users/help'
           #main.span10
             #content
               = yield

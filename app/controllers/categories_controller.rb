@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    @title = "Template"
     @categories = Category.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @title = "Template"
     @category = Category.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
+    @title = "Template"
     @category = Category.new
 
     respond_to do |format|
@@ -34,12 +37,14 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @title = "Template"
     @category = Category.find(params[:id])
   end
 
   # POST /categories
   # POST /categories.json
   def create
+    @title = "Template"
     @category = Category.new(params[:category])
     @category[:user_id] = current_user.id
 
@@ -57,6 +62,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.json
   def update
+    @title = "Template"
     @category = Category.find(params[:id])
 
     respond_to do |format|
@@ -73,6 +79,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    @title = "Template"
     @category = Category.find(params[:id])
     @category.destroy
 

@@ -2,6 +2,7 @@ class TemplatesController < ApplicationController
   # GET /templates
   # GET /templates.json
   def index
+    @title = "Template"
     @categories = Category.where('user_id = ?',current_user.id)
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class TemplatesController < ApplicationController
   # GET /templates/1
   # GET /templates/1.json
   def show
+    @title = "Template"
     @template = Template.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class TemplatesController < ApplicationController
   # GET /templates/new
   # GET /templates/new.json
   def new
+    @title = "Template"
     @template = Template.new
     
     respond_to do |format|
@@ -34,12 +37,14 @@ class TemplatesController < ApplicationController
 
   # GET /templates/1/edit
   def edit
+    @title = "Template"
     @template = Template.find(params[:id])
   end
 
   # POST /templates
   # POST /templates.json
   def create
+    @title = "Template"
     @template = Template.new(params[:template])
     @template[:user_id] = current_user.id
 
@@ -57,6 +62,7 @@ class TemplatesController < ApplicationController
   # PUT /templates/1
   # PUT /templates/1.json
   def update
+    @title = "Template"
     @template = Template.find(params[:id])
 
     respond_to do |format|
@@ -73,6 +79,7 @@ class TemplatesController < ApplicationController
   # DELETE /templates/1
   # DELETE /templates/1.json
   def destroy
+    @title = "Template"
     @template = Template.find(params[:id])
     @template.destroy
 
