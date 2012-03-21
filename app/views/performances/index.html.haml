@@ -1,0 +1,16 @@
+%h1 View Performance
+- if !@athletes.nil?
+  %h2#athlete_performance_head Per Athlete
+  #athlete_performance
+    %table
+      %thead
+        %th Email
+        %th Name
+        %th{:colspan => 2} Action
+      %tbody
+        - @athletes.each do |a|
+          %tr
+            %td= a.email
+            %td= a.fullname
+            %td= link_to 'per session', "/performances/athlete_sessions/#{a.id}"
+            %td= link_to 'graph per template', '#'

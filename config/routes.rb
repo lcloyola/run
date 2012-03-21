@@ -24,6 +24,9 @@ Run::Application.routes.draw do
 
   match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
   
+  match '/performances/index' => 'performances#index'
+  match '/performances/athlete_sessions/:id' => 'performances#athlete_sessions'
+  
   match '/users/profile/:id' => 'users#profile'
   match '/users/prof_kei' => 'users#prof_kei'
   match '/users/view_prof' => 'users#view_prof'

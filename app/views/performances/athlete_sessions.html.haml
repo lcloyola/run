@@ -1,0 +1,19 @@
+%h1 Athlete Performance: Per Session
+%h2= @athlete.fullname
+%h3= @athlete.email
+
+- @s = pie_chart_athlete(@athlete.id)
+= image_tag @s.to_url
+
+%table
+  %thead
+    %th Training Day
+    %th Template
+    %th{:colspan => 2} Action
+  %tbody
+    - @athlete.tsessions.each do |s|
+      %tr
+        %td= s.trainingday
+        %td= s.template.name
+        %td= link_to 'graph', "/performances/athlete_sessions_graph/#{s.id}"
+        %td= link_to 'logs', "/tsessions/#{s.id}"

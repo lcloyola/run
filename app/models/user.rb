@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :members, :foreign_key => :user_id, :dependent => :destroy
   has_many :teams, :through => :members, :source => :team, :dependent => :destroy
   has_many :categories
-  has_many :sessions
+  has_many :tsessions
   has_many :templates
   
   scope :coaches, :conditions => ['is_coach = ?', true]
@@ -31,5 +31,9 @@ class User < ActiveRecord::Base
   end
   def membership
     return Member.where('user_id = ?', self.id)
+  end
+  
+  def session_per_template(template = nil)
+    return Tsession.where('user_id = ? AND template_id = ?', self.id, template)
   end
 end
