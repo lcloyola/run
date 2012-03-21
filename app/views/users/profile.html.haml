@@ -1,0 +1,18 @@
+%h1= @user.fullname
+%h2= @user.email
+
+%p= @user.about
+- if @user.is_coach
+  %b My Athletes
+  %ul
+    - @user.my_athletes.each do |a|
+      %li= a.email
+  %b My Teams
+  %ul
+    - @user.my_team.each do |t|
+      %li= t.name
+- if @user.is_athlete
+  %b My Teams
+  %ul
+    - @user.membership.each do |m|
+      %li= m.team.name

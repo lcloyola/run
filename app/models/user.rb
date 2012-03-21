@@ -26,4 +26,10 @@ class User < ActiveRecord::Base
     end
     return true
   end
+  def my_team
+    return Team.where('user_id = ?', self.id)
+  end
+  def membership
+    return Member.where('user_id = ?', self.id)
+  end
 end

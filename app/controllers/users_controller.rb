@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  def profile
+    @user = User.find(params[:id])
+    @title = "Profile"
+    respond_to do |format|
+      format.html
+    end    
+  end
   def about_us
     @title = 'About Us'
     @athlete = User.new
