@@ -27,18 +27,18 @@
                 %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
     - else
       %h1 Pending Training Sessions
-      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
-        %tr
-          %th Date
-          %th Training
-          %th Unit
-          %th Repetitions
-          %th Sets
-          %th Intervals (mins) 
-          %th Comments          
-          %th Action
-        %tbody
-          - if !@pending.nil?
+      - if !@pending.empty?
+        %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+          %tr
+            %th Date
+            %th Training
+            %th Unit
+            %th Repetitions
+            %th Sets
+            %th Intervals (mins) 
+            %th Comments          
+            %th Action
+          %tbody
             - @pending.each do |s|
               %tr
                 %td= s.trainingday
@@ -49,8 +49,8 @@
                 %td= s.template.interval
                 %td= s.comments
                 - unless s.trainingday >  Date.today
-                  %td= link_to 'Update', '/users/fillout'
-          - else
-            %p no unupdated trainings
+                  %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
+      - else
+        %p no unupdated training logs
       %br
 #a{:style=>"clear:both"}

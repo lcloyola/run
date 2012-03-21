@@ -17,7 +17,7 @@
     - set = 1
     %tr
       %th{:colspan => @tsession.template.reps} Set 1
-    = form_for(@tsession.log, :url => "update_log") do |f|
+    = form_for(@tsession.log, :url => "/tsessions/#{@tsession.id}/update_log") do |f|
       - @tsession.log.each do |log|
         = f.fields_for log, :index => log.id do |log_f|
           %td= log_f.text_field :value, :class => "logsheet"

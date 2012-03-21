@@ -101,11 +101,21 @@ class TsessionsController < ApplicationController
   end
   
   def edit_log
-    @tsession = Tsession.find(params[:session_id])
+    @tsession = Tsession.find(params[:id])
     respond_to do |format|
       format.html
     end
   end
   def update_log
+    @tsession = Tsession.find(params[:id])
+    params[:log][:log].each do |l|
+      @log = Log.find(l[0])
+      @log.update_attributes(l[1])
+    end
+    @tsession.update_attributes(:is_done => true)
+    respond_to do |format|
+      format.html {redirect_to @tsession }
+    end
   end
+  
 end

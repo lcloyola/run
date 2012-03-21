@@ -28,4 +28,23 @@
   = @session.comments
 %br
 
-
+- if @session.is_done
+  %table
+    %thead
+      - for j in 1..@session.template.reps
+        %th{:style=>"background:#eee"}= "Repetition #{j}"
+    %tbody
+      - rep = 1
+      - set = 1
+      %tr
+        %th{:colspan => @session.template.reps} Set 1
+      - @session.log.each do |log|
+        %td= log.value
+        - rep = rep + 1
+        -if rep > @session.template.reps && set
+          - set = set + 1
+          </tr>
+          - unless set > @session.template.sets
+            %tr
+              %th{:colspan => @session.template.reps}= "Set #{set}"
+            - rep = 1
