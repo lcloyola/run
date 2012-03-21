@@ -44,9 +44,9 @@
                   - else
                     %li= link_to "Athletes", '/users/create_athlete'
                   - if @title == "Performance"
-                    %li.active#current= link_to "Performance", '/users/performance_team'
+                    %li.active#current= link_to "Performance", '/performances/index'
                   - else
-                    %li= link_to "Performance", '/users/performance_team'
+                    %li= link_to "Performance", '/performances/index'
 
                 - else
                   - if @title == "Session"
