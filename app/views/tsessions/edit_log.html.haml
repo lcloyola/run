@@ -1,0 +1,11 @@
+%table
+  %tbody
+    - rep = 1
+    - set = 1
+    = form_for(@tsession.log, :url => "update_log") do |f|
+      - @tsession.log.each do |log|
+        = f.fields_for log, :index => log.id do |log_f|
+          %td= log_f.text_field :value, :class => "logsheet"
+
+      .actions
+        = f.submit 'Save'

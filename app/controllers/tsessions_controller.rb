@@ -3,8 +3,8 @@ class TsessionsController < ApplicationController
   # GET /sessions.json
   def index
     @title = "Session"
-    @sessions = Tsession.all
-
+    @templates = Template.where('user_id = ?', current_user.id)
+    @pending = Tsession.where('user_id = ?  AND is_done = ?', current_user, false)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @sessions }
@@ -27,6 +27,7 @@ class TsessionsController < ApplicationController
   # GET /sessions/new.json
   def new
     @title = "Session"
+    @today = Tsession.where("trainingday = ?", Date.today.to_s)
     @session = Tsession.new
 
     respond_to do |format|

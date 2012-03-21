@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317012320) do
+ActiveRecord::Schema.define(:version => 20120321165159) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20120317012320) do
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_done",     :default => false
   end
 
   add_index "tsessions", ["template_id"], :name => "index_tsessions_on_template_id"

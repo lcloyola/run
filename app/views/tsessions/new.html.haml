@@ -1,16 +1,22 @@
 .container-fluid
   .row-fluid
     #leftpane.span3
-      .brownbox
-        %h3{:style=>"color:white"} Training Sessions
+    .brownbox{:style=>"width:200px"}
+      - if !@today.nil?
+        %h3{:style=>"color:white"} Today's Sessions
         %hr
         %p
-          //- @teams.each do |team|
-          //  = team.name
-          //  = team.user.email
-          //  = link_to 'Show', team
-          //  = link_to 'Edit', edit_team_path(team)
-          //  %td= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete
+          - @today.each do |s|
+            %ul{:style=>"width:100%"}
+              %li
+                %b
+                  =s.user.email
+                  =link_to '(view)', '#'
+                %br
+                = s.template.name
+              %li
+      - else
+        %p no trainings yet
     #athletebox.span9
       %h2 New Session
       %br

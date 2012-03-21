@@ -49,10 +49,10 @@
                     %li= link_to "Performance", '/users/performance_team'
 
                 - else
-                  - if @title == "Pending"
-                    %li.active.athlete#current= link_to "New Trainings", '/users/pending'
+                  - if @title == "Session"
+                    %li.active.athlete#current= link_to "New Trainings", '/tsessions'
                   - else
-                    %li= link_to "New Trainings", '/users/pending'
+                    %li= link_to "New Trainings", '/tsessions'
                   - if @title == "Performance"
                     %li.active#current= link_to "Performance", '/users/athlete_overall'
                   - else

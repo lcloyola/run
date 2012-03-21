@@ -3,7 +3,8 @@
 
 
 %h1= @session.trainingday
-%h5
+%h3= @session.user.email
+%h4
   = link_to 'Edit', edit_tsession_path(@session)
   \|
   = link_to 'Back', tsessions_path
@@ -22,9 +23,6 @@
   %br
   %b Intervals
   = @session.template.interval
-%p
-  %b User:
-  = @session.user.email
 %p
   %b Comments:
   = @session.comments

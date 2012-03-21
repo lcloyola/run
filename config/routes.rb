@@ -20,7 +20,9 @@ Run::Application.routes.draw do
   end
 
   match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
-  
+
+  match '/tsessions/edit_log/:session_id'=> 'tsessions#edit_log'
+  match 'update_log/'=> 'tsessions#update_log'
   match '/users/prof_kei' => 'users#prof_kei'
   match '/users/view_prof' => 'users#view_prof'
   match '/users/prof_liz' => 'users#prof_liz'

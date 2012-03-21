@@ -1,28 +1,56 @@
 .container-fluid
   .row-fluid
-    %h1 Sessions
-    %h4= link_to 'New Session', new_tsession_path
-    %br
-    #athletebox.span10
-      %table
-        %tr
-          %th Training Day
-          %th Template
-          %th User
-          %th Comments
-          %th 
-          %th Actions
-          %th
-
-        - @sessions.each do |session|
+    - if current_user.is_coach
+      %h1 Sessions
+      %h4= link_to 'New Session', new_tsession_path
+      %br
+      #athletebox.span10
+        %table
           %tr
-            %td= session.trainingday
-            %td= session.template.name
-            %td= session.user.email
-            %td= session.comments
-            %td= link_to 'Show', session
-            %td= link_to 'Edit', edit_tsession_path(session)
-            %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
+            %th Training Day
+            %th Template
+            %th User
+            %th Comments
+            %th 
+            %th Actions
+            %th
 
+          - @templates.each do |t|
+            - t.tsession.each do |session|
+              %tr
+                %td= session.trainingday
+                %td= session.template.name
+                %td= session.user.email
+                %td= session.comments
+                %td= link_to 'Show', session
+                %td= link_to 'Edit', edit_tsession_path(session)
+                %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
+    - else
+      %h1 Pending Training Sessions
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th Date
+          %th Training
+          %th Unit
+          %th Repetitions
+          %th Sets
+          %th Intervals (mins) 
+          %th Comments          
+          %th Action
+        %tbody
+          - if !@pending.nil?
+            - @pending.each do |s|
+              %tr
+                %td= s.trainingday
+                %td= s.template.name
+                %td= s.template.unit
+                %td= s.template.reps
+                %td= s.template.sets
+                %td= s.template.interval
+                %td= s.comments
+                - unless s.trainingday >  Date.today
+                  %td= link_to 'Update', '/users/fillout'
+          - else
+            %p no unupdated trainings
       %br
 #a{:style=>"clear:both"}
