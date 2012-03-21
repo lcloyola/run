@@ -11,4 +11,7 @@ class MyregistrationsController < Devise::RegistrationsController
     resource = build_resource({})
     respond_with resource
   end
+  def edit
+    @title = "Profile"
+  end
 end
