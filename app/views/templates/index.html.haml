@@ -1,7 +1,12 @@
 .container-fluid
   .row-fluid
     %h1 Training Templates
-    %h4= link_to 'Create New', '/templates/new'
+    %h4
+      (
+      = link_to 'New Template', '/templates/new'
+      |
+      =link_to 'New Category', new_category_path
+      )
     %br
     #athletebox.span10
       - @categories.each do |category|
