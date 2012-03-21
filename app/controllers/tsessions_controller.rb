@@ -99,4 +99,13 @@ class TsessionsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def edit_log
+    @tsession = Tsession.find(params[:session_id])
+    respond_to do |format|
+      format.html
+    end
+  end
+  def update_log
+  end
 end

@@ -1,11 +1,33 @@
+%h1= @tsession.trainingday
+%h4= @tsession.template.name
+%p
+  %b Details:
+  = "#{@tsession.template.sets} sets of #{@tsession.template.reps} #{@tsession.template.unit}(s). With #{@tsession.template.interval} mins rest per set."
+- unless @tsession.comments.empty?
+  %p
+    %b Comments:
+    = @tsession.comments
+%br
 %table
+  %thead
+    - for j in 1..@tsession.template.reps
+      %th= "Repetition #{j}"
   %tbody
     - rep = 1
     - set = 1
+    %tr
+      %th{:colspan => @tsession.template.reps} Set 1
     = form_for(@tsession.log, :url => "update_log") do |f|
       - @tsession.log.each do |log|
         = f.fields_for log, :index => log.id do |log_f|
           %td= log_f.text_field :value, :class => "logsheet"
-
+          - rep = rep + 1
+          -if rep > @tsession.template.reps && set
+            - set = set + 1
+            </tr>
+            - unless set > @tsession.template.sets
+              %tr
+                %th{:colspan => @tsession.template.reps}= "Set #{set}"
+              - rep = 1
       .actions
         = f.submit 'Save'
