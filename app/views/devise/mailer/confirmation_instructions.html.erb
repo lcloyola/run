@@ -3,14 +3,17 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
-  <body>
+  <body style="font-family: 'PT Sans', 'Tahoma','Geneva','Kalimati',sans-serif">
   <img src="http://images.plurk.com/d279450ddddd4889b41546e32865d885.jpg" />
   <p>Welcome <%= @resource.email %>!</p>
 
-  <p>Runners' Ultimate Notebook is... Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+  <p>Runners' Ultimate Notebook is... A Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
   
   <p>You can confirm your account through the link below:</p>
 
   <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+  
+  <p>Enjoy RUN!<br />
+  <span style="color:#555">RUN Admin<span></p>
   </body>
 </html>
