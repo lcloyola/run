@@ -75,8 +75,7 @@ class UsersController < ApplicationController
     end
   end
   def help
-    @title = 'View Profile'
-    @athlete = User.new
+    @title = 'Help'
     respond_to do |format|
       format.html
     end
