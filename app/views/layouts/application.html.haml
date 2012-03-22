@@ -61,7 +61,10 @@
                   %li.active#current= link_to "Profile", "/users/profile/#{current_user.id}"
                 - else
                   %li= link_to "Profile", '/users/edit'
-                %li= link_to "Help", '/users/help'
+                - if @title == "Help"
+                  %li.active#current= link_to "Help", '/users/help'
+                -else
+                  %li= link_to "Help", '/users/help'
           #main.span10
             #content
               = yield
