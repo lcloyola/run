@@ -15,4 +15,7 @@
       %tr
         %td= s.trainingday
         %td= s.template.name
-        %td= link_to 'logs', "/tsessions/#{s.id}"
+        - if s.is_done
+          %td= link_to 'logs', "/tsessions/#{s.id}"
+        - elsif
+          %td logs not available

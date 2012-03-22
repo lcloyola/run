@@ -64,7 +64,7 @@ module PerformancesHelper
       pc.data t.name, athlete.session_per_template(t.id).count
     end
     #puts "\nPie Chart" 
-    pc.show_labels = true
+    pc.show_legend = true
     return pc
   end
   

@@ -2,13 +2,15 @@
 %table
   %tr
     %th Name
-    %th
-    %th Actions
-    %th
+    %th Description
+    %th Members
+    %th{:colspan => 3} Actions
 
   - @teams.each do |team|
     %tr
       %td= team.name
+      %td= team.description
+      %td= team.athletes.count
       %td= link_to 'Show', team
       %td= link_to 'Edit', edit_team_path(team)
       %td= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete

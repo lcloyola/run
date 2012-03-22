@@ -54,13 +54,13 @@
                   - else
                     %li= link_to "New Trainings", '/tsessions'
                   - if @title == "Performance"
-                    %li.active#current= link_to "Performance", '/users/athlete_overall'
+                    %li.active#current= link_to "Performance", "/performances/athlete_sessions/#{current_user.id}"
                   - else
-                    %li= link_to "Performance", '/users/athlete_overall'
+                    %li= link_to "Performance", "/performances/athlete_sessions/#{current_user.id}"
                 - if @title == "Profile"
                   %li.active#current= link_to "Profile", "/users/profile/#{current_user.id}"
                 - else
-                  %li= link_to "Profile", '/users/edit'
+                  %li= link_to "Profile", "/users/profile/#{current_user.id}"
                 - if @title == "Help"
                   %li.active#current= link_to "Help", '/users/help'
                 -else

@@ -19,5 +19,6 @@
           %td
             - athlete.teams.each do |team|
               = team.name 
-          %td= link_to 'Profile', '#'
-          %td= link_to 'Performance', '#'            
+              ,
+          %td= link_to 'Profile', "/users/profile/#{athlete.id}"
+          %td= link_to 'Performance', "/performances/athlete_sessions/#{athlete.id}"
