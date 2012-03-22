@@ -2,6 +2,7 @@
 %h2= @user.email
 - if @user.id == current_user.id
   %h3= link_to "edit my profile", "/users/edit"
+%br
 %p= @user.about
 - if @user.is_coach
   %b My Athletes
