@@ -1,12 +1,16 @@
 .container-fluid
-  .row-fluid
-    %h1 Help
-    %br
-    %p
-      %br I am here to help you.
-      %br
-      %b 
-      
-      
-
-
+	.row-fluid
+		%h1 Help
+		%br
+		%h3 Frequently Asked Questions(FAQs):
+		%p
+			%br= link_to'How do I edit my profile?', '/users/help_editprof' 
+			%br= link_to'How do I enroll an athlete?', '/users/help_enath' 
+			%br= link_to'How do I create a team?', '/users/help_crteam'
+			%br= link_to'How do I create a new category?', '/users/help_newcat'
+			%br= link_to'How do I create a new training template?', '/users/help_newtemp'
+			%br= link_to'How do I create a new session?', '/users/help_newses'
+			%br= link_to'How do I add athletes in a team?', '/users/help_crteam'
+			%br= link_to'How do I view all my athletes / teams?', '/users/help_viewat'
+			%br= link_to'How do I view all my athletes\' / teams\' performances?', '/users/help_viewperf'
+			%br= link_to'How do I save my athletes\' / teams\' performance statistics in a PDF?', '/users/help_viewperf'

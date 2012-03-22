@@ -1,17 +1,40 @@
 module PerformanceHelper
 
-  def line_graph
+  def line_graph_athlete(session_id = nil)
+    @session = Tsession.find(session_id)
     require 'google_chart'
-
-	  lc = GoogleChart::LineChart.new("400x200", "Line Chart", false)
-	  lc.data "Line yellow", [3,5,1,9,0,2], 'ffcc00'
-	  lc.data "Line blue", [2,4,0,6,9,3], '11cccc'
+	  lc = GoogleChart::LineChart.new("470x250", "Line Chart", false)
+    values = make_session_array(session_id)
+    i = 0
+    values.each do |set|
+      color = "%06x" % (rand * 0xffffff)
+      lc.data "Set#{i + 1}", set, color
+      i = i + 1
+    end
 	  lc.axis :y, :range => [0,10], :font_size => 10, :alignment => :center
+	  lc.axis :x, :range => [1,@session.template.reps], :font_size => 10, :alignment => :center
 	  lc.show_legend = true
-	  lc.shape_marker :circle, :color => '362f2d', :data_set_index => 0, :data_point_index => -1, :pixel_size => 10
   	return lc
   end
   
+  def make_session_array(session_id = nil)
+    @session = Tsession.find(session_id)
+    @L = Array.new()
+    rep = 0
+    set = 0
+
+    @L[0] = Array.new()
+    @session.log.each do |log|
+      @L[set] << log.value
+      rep = rep + 1
+      if rep == @session.template.reps && set != (@session.template.sets - 1)
+        set = set + 1
+        @L[set] = Array.new()
+        rep = 0
+      end
+    end
+    return @L
+  end
   def bar_chart
     require 'google_chart'
 

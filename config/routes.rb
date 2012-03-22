@@ -26,7 +26,15 @@ Run::Application.routes.draw do
   
   match '/performances/index' => 'performances#index'
   match '/performances/athlete_sessions/:id' => 'performances#athlete_sessions'
-  
+    match '/users/help_editprof' => 'users#help_editprof'  
+  match '/users/help_enath' => 'users#help_enath'  
+  match '/users/help_crteam' => 'users#help_crteam'  
+  match '/users/help_newses' => 'users#help_newses'  
+  match '/users/help_viewat' => 'users#help_viewat'  
+  match '/users/help_viewperf' => 'users#help_viewperf'  
+  match '/users/help_savepdf' => 'users#help_savepdf'    
+  match '/users/help_newcat' => 'users#help_newcat'
+  match '/users/help_newtemp' => 'users#help_newtemp'
   match '/users/profile/:id' => 'users#profile'
   match '/users/prof_kei' => 'users#prof_kei'
   match '/users/view_prof' => 'users#view_prof'

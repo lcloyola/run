@@ -20,6 +20,71 @@ class UsersController < ApplicationController
       format.html
     end
   end
+  
+  def helpnew
+    @title = 'Help New Template'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def helpcat
+    @title = 'Help New Category'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def helpses
+    @title = 'Help New Session'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def helpcrteam
+    @title = 'Help new team'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def helpsavepdf
+    @title = 'Help save pdf'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def helpenath
+    @title = 'Help enroll ath'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def helpviewat
+    @title = 'Help View athletes and teams'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def helpviewprof
+    @title = 'Help view prof'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
+  
+  def helpeditprof
+    @title = 'Help Edit Profile'
+    @athlete = User.new
+    respond_to do |format|    
+      format.html
+    end
+  end
   def help
     @title = 'View Profile'
     @athlete = User.new

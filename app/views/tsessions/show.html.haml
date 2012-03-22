@@ -29,6 +29,13 @@
 %br
 
 - if @session.is_done
+  - @graph = line_graph_athlete(@session.id)
+  = image_tag @graph.to_url
+  - @arr =  make_session_array(@session.id)
+  = debug @arr
+  %h= @arr
+  %br
+  %br
   %table
     %thead
       - for j in 1..@session.template.reps
@@ -48,3 +55,5 @@
             %tr
               %th{:colspan => @session.template.reps}= "Set #{set}"
             - rep = 1
+            
+            
