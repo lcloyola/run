@@ -1,4 +1,4 @@
-module PerformanceHelper
+module PerformancesHelper
 
   def line_graph_athlete(session_id = nil)
     @session = Tsession.find(session_id)
@@ -56,15 +56,16 @@ module PerformanceHelper
   end
   
   def pie_chart_athlete(id=nil)
-      pc = GoogleChart::PieChart.new('500x200', "Training Templates",true) #do |pc| 
-      template = Template.all
-      athlete = User.find(id)
-      template.each do |t|
-        pc.data t.name, athlete.session_per_template(t.id).count
-      end
-      #puts "\nPie Chart" 
-      pc.show_labels = true
-      return pc
+    require 'google_chart'
+    pc = GoogleChart::PieChart.new('500x200', "Training Templates",true) #do |pc| 
+    template = Template.all
+    athlete = User.find(id)
+    template.each do |t|
+      pc.data t.name, athlete.session_per_template(t.id).count
+    end
+    #puts "\nPie Chart" 
+    pc.show_labels = true
+    return pc
   end
   
   def v_bar
