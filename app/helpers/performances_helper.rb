@@ -1,20 +1,41 @@
 module PerformancesHelper
 
-  def line_graph_athlete(session_id = nil)
+  def line_graph_athlete(session_id = nil, values = nil)
     @session = Tsession.find(session_id)
     require 'google_chart'
 	  lc = GoogleChart::LineChart.new("470x250", "Value vs Rep", false)
-    values = make_reps_array(session_id)
     i = 0
     values.each do |set|
       color = "%06x" % (rand * 0xffffff)
       lc.data "Set#{i + 1}", set, color
       i = i + 1
     end
-	  lc.axis :y, :range => [0, max2d(values)], :font_size => 10, :alignment => :center
+	  lc.axis :y, :range => [0, max2d(@session.set_arr)], :font_size => 10, :alignment => :center
 	  lc.axis :x, :labels => [*1..@session.template.reps], :font_size => 10, :alignment => :center
 	  lc.show_legend = true
   	return lc
+  end
+
+  def v_bar_athlete(session_id = nil, values = nil)
+    require 'google_chart'
+    @session = Tsession.find(session_id)
+    
+    bc = GoogleChart::BarChart.new "300x300", "set per rep", :vertical, false
+    names_array = [*1..@session.template.reps]
+    i = 1
+    values.each do |set|
+      bc.data "Set #{i}", set, ("%06x" % (rand * 0xffffff))
+      i = i +1
+    end
+    bc.axis :y, :labels => names_array, :font_size => 10
+    bc.axis :x, :labels => [*0..@session.template.sets].map! { |word| "rep #{word}" }
+    if i > 1
+      bc.stacked = true
+      bc.show_legend = true
+    end
+    bc.data_encoding = :extended
+
+    return bc
   end
   
   def max2d(arr = nil)
@@ -56,42 +77,5 @@ module PerformancesHelper
     #puts "\nPie Chart" 
     pc.show_legend = true
     return pc
-  end
-  
-  def v_bar_athlete(session_id = nil)
-    require 'google_chart'
-    @session = Tsession.find(session_id)
-    bc = GoogleChart::BarChart.new "300x300", "set per rep", :vertical, false
-    names_array = [*1..@session.template.reps]
-    values = make_sets_array(@session.id)
-    i = 1
-    values.each do |set|
-      bc.data "Set #{i}", set, ("%06x" % (rand * 0xffffff))
-      i = i +1
-    end
-    bc.axis :y, :labels => names_array, :font_size => 10
-    bc.axis :x, :labels => [*0..@session.template.sets].map! { |word| "rep #{word}" }
-    bc.show_legend = true
-    bc.stacked = true
-    bc.data_encoding = :extended
-
-    return bc
-  end
-  def make_reps_array(session_id = nil)
-    @session = Tsession.find(session_id)
-    @L = Array.new(@session.template.sets) {Array.new(@session.template.reps)}
-    @session.log.each do |log|
-      @L[log.set - 1][log.repetition - 1] = log.value
-    end
-    return @L
-  end
-  
-  def make_sets_array(session_id = nil)
-    @session = Tsession.find(session_id)
-    @L = Array.new(@session.template.reps) {Array.new(@session.template.sets)}
-    @session.log.each do |log|
-      @L[log.repetition - 1][log.set - 1] = log.value
-    end
-    return @L
   end
 end

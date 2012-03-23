@@ -29,14 +29,15 @@
 %br
 
 - if @session.is_done
-  - @line = line_graph_athlete(@session.id)
-  - @bar = v_bar_athlete(@session.id)
+  - @line = line_graph_athlete(@session.id, @session.rep_arr)
+  - @bar = v_bar_athlete(@session.id, @session.set_arr)
+  - @line2 = line_graph_athlete(@session.id, @session.ave_rep)
+  - @bar2 = v_bar_athlete(@session.id, @session.ave_rep)
   = image_tag @line.to_url
   = image_tag @bar.to_url
-  -# @arr =  make_sets_array(@session.id)
-  =# debug @arr
-  %h= @arr
-  %br
+  = image_tag @line2.to_url
+  = image_tag @bar2.to_url
+
   %br
   %table
     %thead
