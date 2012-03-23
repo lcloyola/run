@@ -1,62 +1,73 @@
 %p#notice= notice
-
-
-
-%h1= @session.trainingday
-%h3= @session.user.email
-%h4
-  = link_to 'Edit', edit_tsession_path(@session)
-  \|
-  = link_to 'Back', tsessions_path
-%br
-%h4= @session.template.name
-%p
-  %br
-  %b Unit:
-  = @session.template.unit
-  %br
-  %b Sets:
-  = @session.template.sets
-  %br
-  %b Repetitions:
-  = @session.template.reps
-  %br
-  %b Intervals
-  = @session.template.interval
-%p
-  %b Comments:
-  = @session.comments
-%br
-
-- if @session.is_done
-  - @line = line_graph_athlete(@session.id, @session.rep_arr)
-  - @bar = v_bar_athlete(@session.id, @session.set_arr)
-  - @line2 = line_graph_athlete(@session.id, @session.ave_rep)
-  - @bar2 = v_bar_athlete(@session.id, @session.ave_rep)
-  = image_tag @line.to_url
-  = image_tag @bar.to_url
-  = image_tag @line2.to_url
-  = image_tag @bar2.to_url
-
-  %br
-  %table
-    %thead
-      - for j in 1..@session.template.reps
-        %th{:style=>"background:#eee"}= "Repetition #{j}"
-    %tbody
-      - rep = 1
-      - set = 1
-      %tr
-        %th{:colspan => @session.template.reps} Set 1
-      - @session.log.each do |log|
-        %td= log.value
-        - rep = rep + 1
-        -if rep > @session.template.reps && set
-          - set = set + 1
-          </tr>
-          - unless set > @session.template.sets
-            %tr
-              %th{:colspan => @session.template.reps}= "Set #{set}"
-            - rep = 1
-            
-            
+.container-fluid
+  %h1= @session.trainingday
+  %h3= @session.user.email
+  %h4
+    = link_to 'Edit', edit_tsession_path(@session)
+    \|
+    = link_to 'Back', tsessions_path
+  .row-fluid
+    .span4
+      %br
+      %h4= @session.template.name
+      %p
+        %br
+        %b Unit:
+        = @session.template.unit
+        %br
+        %b Sets:
+        = @session.template.sets
+        %br
+        %b Repetitions:
+        = @session.template.reps
+        %br
+        %b Intervals
+        = @session.template.interval
+      %p
+        %b Comments:
+        = @session.comments
+      %br
+    .span5
+      - if @session.is_done
+        - @line = line_graph_athlete(@session.id, @session.rep_arr)
+        - @bar = v_bar_athlete(@session.id, @session.set_arr)
+        - @line2 = line_graph_athlete(@session.id, @session.ave_rep)
+        - @bar2 = v_bar_athlete(@session.id, @session.ave_rep)
+        #gallery_container2.ad-gallery{:style => "text-align: center; margin: 0 auto;"}
+          .ad-nav
+            .ad-thumbs
+              %ul.ad-thumb-list
+                %li
+                  %a#gallery{:rel=> "lightbox-graphs", :href => @line.to_url, :title => "Time per Repetitions"}
+                    = image_tag @line.to_url, :width => 180
+                %li
+                  %a#gallery{:rel=> "lightbox-graphs", :href => @bar.to_url, :title => "Sets vs. Repetitions"}
+                    = image_tag @bar.to_url, :width => 180
+                %li
+                  %a#gallery{:rel=> "lightbox-graphs", :href => @line2.to_url, :title => "Repetition Average"}
+                    = image_tag @line2.to_url, :width => 180                              
+                %li
+                  %a#gallery{:rel=> "lightbox-graphs", :href => @bar2.to_url, :title => "Set Average"}
+                    = image_tag @bar2.to_url, :width => 180
+    #a{:style=>"clear:both"}
+    %table
+      %thead
+        - for j in 1..@session.template.reps
+          %th{:style=>"background:#eee"}= "Repetition #{j}"
+      %tbody
+        - rep = 1
+        - set = 1
+        %tr
+          %th{:colspan => @session.template.reps} Set 1
+        - @session.log.each do |log|
+          %td= log.value
+          - rep = rep + 1
+          -if rep > @session.template.reps && set
+            - set = set + 1
+            </tr>
+            - unless set > @session.template.sets
+              %tr
+                %th{:colspan => @session.template.reps}= "Set #{set}"
+              - rep = 1
+              
+              

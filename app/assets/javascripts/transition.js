@@ -4,11 +4,13 @@ $(document).ready(function() {
     $("#content").fadeIn(700);
  
     $("a").click(function(event){
+      if ((this.id != 'gallery') && (this.id != 'lbPrevLink') && (this.id != 'lbNextLink') && (this.id != 'lbCloseLink')) {
         event.preventDefault();
         linkLocation = this.href;
         $("body").fadeOut(350, redirectPage);
+      }
     });
- 
+
     function redirectPage() {
         window.location = linkLocation;
     }
