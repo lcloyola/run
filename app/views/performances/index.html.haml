@@ -1,16 +1,27 @@
-%h1 View Performance
-- if !@athletes.nil?
-  %h2#athlete_performance_head Per Athlete
-  #athlete_performance
-    %table
-      %thead
-        %th Email
-        %th Name
-        %th{:colspan => 2} Action
-      %tbody
-        - @athletes.each do |a|
-          %tr
-            %td= a.email
-            %td= a.fullname
-            %td= link_to 'per session', "/performances/athlete_sessions/#{a.id}"
-            %td= link_to 'graph per template', '#'
+%h1 Performance
+%br
+.container-fluid
+  .row-fluid
+    #leftpane.span3
+      - if !current_user.my_team.empty?
+        .brownbox
+          %h2 Team Performance
+          - current_user.my_team.each do |t|
+            %b
+              %li= link_to t.name, '#'
+    #athletebox.span9
+      - if !@athletes.nil?
+        %h2#athlete_performance_head Athletes Performance
+        #athlete_performance
+          %table
+            %thead
+              %th Email
+              %th Name
+              %th{:colspan => 2} Action
+            %tbody
+              - @athletes.each do |a|
+                %tr
+                  %td= a.email
+                  %td= a.fullname
+                  %td= link_to 'per session', "/performances/athlete_sessions/#{a.id}"
+                  %td= link_to 'graph per template', '#'
