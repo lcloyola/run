@@ -5,17 +5,32 @@
 - @s = pie_chart_athlete(@athlete.id)
 = image_tag @s.to_url
 
-%table
-  %thead
-    %th Training Day
-    %th Template
-    %th{:colspan => 2} Action
-  %tbody
-    - @athlete.tsessions.each do |s|
-      %tr
-        %td= s.trainingday
-        %td= s.template.name
-        - if s.is_done
-          %td= link_to 'logs', "/tsessions/#{s.id}"
-        - elsif
-          %td logs not available
+- if !@athlete.tsessions.done.nil?
+  #done
+    %table
+      %thead
+        %th Training Day
+        %th Template
+        %th{:colspan => 2} Action
+      %tbody
+        - @athlete.tsessions.done.each do |s|
+          %tr
+            %td= s.trainingday
+            %td= s.template.name
+            %td= link_to 'logs', "/tsessions/#{s.id}"
+
+- if !@athlete.tsessions.pending.nil?
+  #pending
+    %table
+      %thead
+        %th Training Day
+        %th Template
+        - if @athlete.id == current_user.id
+          %th Action
+      %tbody
+        - @athlete.tsessions.pending.each do |s|
+          %tr
+            %td= s.trainingday
+            %td= s.template.name
+            - if (s.trainingday <  Date.today) && (@athlete.id == current_user.id)
+              %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
