@@ -5,32 +5,48 @@
 - @s = pie_chart_athlete(@athlete.id)
 = image_tag @s.to_url
 
-- if !@athlete.tsessions.done.nil?
-  #done
-    %table
-      %thead
-        %th Training Day
-        %th Template
-        %th{:colspan => 2} Action
-      %tbody
-        - @athlete.tsessions.done.each do |s|
-          %tr
-            %td= s.trainingday
-            %td= s.template.name
-            %td= link_to 'logs', "/tsessions/#{s.id}"
-
-- if !@athlete.tsessions.pending.nil?
-  #pending
-    %table
-      %thead
-        %th Training Day
-        %th Template
-        - if @athlete.id == current_user.id
-          %th Action
-      %tbody
-        - @athlete.tsessions.pending.each do |s|
-          %tr
-            %td= s.trainingday
-            %td= s.template.name
-            - if (s.trainingday <  Date.today) && (@athlete.id == current_user.id)
-              %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
+%h3
+  %span#allhead{:style => "color: #01939A"}= 'All'
+  |
+  %span#donehead{:style => "color: #01939A"}= 'Done'
+  |
+  %span#pendinghead{:style => "color: #01939A"}= 'Pending'
+#all
+  %table
+    %thead
+      %th Training Day
+      %th Template
+      %th{:colspan => 2} Action
+    %tbody
+      - @athlete.tsessions.each do |s|
+        %tr
+          %td= s.trainingday
+          %td= s.template.name
+          %td= link_to 'logs', "/tsessions/#{s.id}"
+#done
+  %table
+    %thead
+      %th Training Day
+      %th Template
+      %th{:colspan => 2} Action
+    %tbody
+      - @athlete.tsessions.done.each do |s|
+        %tr
+          %td= s.trainingday
+          %td= s.template.name
+          %td= link_to 'logs', "/tsessions/#{s.id}"
+        
+#pending
+  %table
+    %thead
+      %th Training Day
+      %th Template
+      - if @athlete.id == current_user.id
+        %th Action
+    %tbody
+      - @athlete.tsessions.pending.each do |s|
+        %tr
+          %td= s.trainingday
+          %td= s.template.name
+          - if (s.trainingday <  Date.today) && (@athlete.id == current_user.id)
+            %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
