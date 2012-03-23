@@ -3,39 +3,29 @@ module PerformancesHelper
   def line_graph_athlete(session_id = nil)
     @session = Tsession.find(session_id)
     require 'google_chart'
-	  lc = GoogleChart::LineChart.new("470x250", "Line Chart", false)
-    values = make_session_array(session_id)
+	  lc = GoogleChart::LineChart.new("470x250", "Value vs Rep", false)
+    values = make_reps_array(session_id)
     i = 0
     values.each do |set|
       color = "%06x" % (rand * 0xffffff)
       lc.data "Set#{i + 1}", set, color
       i = i + 1
     end
-	  lc.axis :y, :range => [0,10], :font_size => 10, :alignment => :center
-	  lc.axis :x, :range => [1,@session.template.reps], :font_size => 10, :alignment => :center
+	  lc.axis :y, :range => [0, max2d(values)], :font_size => 10, :alignment => :center
+	  lc.axis :x, :labels => [*1..@session.template.reps], :font_size => 10, :alignment => :center
 	  lc.show_legend = true
   	return lc
   end
   
-  def make_session_array(session_id = nil)
-    @session = Tsession.find(session_id)
-    @L = Array.new()
-    rep = 0
-    set = 0
-
-    @L[0] = Array.new()
-    @session.log.each do |log|
-      @L[set] << log.value
-      rep = rep + 1
-      if rep == @session.template.reps && set != (@session.template.sets - 1)
-        set = set + 1
-        @L[set] = Array.new()
-        rep = 0
-      end
+  def max2d(arr = nil)
+    max = []
+    arr.each do |a|
+      max << a.max
     end
-    return @L
+    return max.max.to_int
   end
-  def bar_chart
+  
+  def h_bar_athlete(id=nil)
     require 'google_chart'
 
     bar_1_data = [350,110,700]
@@ -68,24 +58,40 @@ module PerformancesHelper
     return pc
   end
   
-  def v_bar
+  def v_bar_athlete(session_id = nil)
     require 'google_chart'
-
-    bar_1_data = [350,110,700]
-    bar_2_data = [200,800,50]
-    color_1 = 'c53711'
-    color_2 = '0000ff'
-    names_array = ["Bob","Stella","Foo"]
-    bc = GoogleChart::BarChart.new("300x600", "Vertical Bar Graph", :vertical, false) #do |bc|
-    bc.data "FirstResultBar", bar_1_data, color_1
-    bc.data "SecondResultBar", bar_2_data, color_2
+    @session = Tsession.find(session_id)
+    bc = GoogleChart::BarChart.new "300x300", "set per rep", :vertical, false
+    names_array = [*1..@session.template.reps]
+    values = make_sets_array(@session.id)
+    i = 1
+    values.each do |set|
+      bc.data "Set #{i}", set, ("%06x" % (rand * 0xffffff))
+      i = i +1
+    end
     bc.axis :y, :labels => names_array, :font_size => 10
-    bc.axis :x, :range => [0,1000]
-    bc.show_legend = false
+    bc.axis :x, :labels => [*0..@session.template.sets].map! { |word| "rep #{word}" }
+    bc.show_legend = true
     bc.stacked = true
     bc.data_encoding = :extended
-    bc.shape_marker :circle, :color => '00ff00', :data_set_index => 0, :data_point_index => -1, :pixel_size => 10
 
     return bc
+  end
+  def make_reps_array(session_id = nil)
+    @session = Tsession.find(session_id)
+    @L = Array.new(@session.template.sets) {Array.new(@session.template.reps)}
+    @session.log.each do |log|
+      @L[log.set - 1][log.repetition - 1] = log.value
+    end
+    return @L
+  end
+  
+  def make_sets_array(session_id = nil)
+    @session = Tsession.find(session_id)
+    @L = Array.new(@session.template.reps) {Array.new(@session.template.sets)}
+    @session.log.each do |log|
+      @L[log.repetition - 1][log.set - 1] = log.value
+    end
+    return @L
   end
 end

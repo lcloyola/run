@@ -29,9 +29,11 @@
 %br
 
 - if @session.is_done
-  - @graph = line_graph_athlete(@session.id)
-  = image_tag @graph.to_url
-  -# @arr =  make_session_array(@session.id)
+  - @line = line_graph_athlete(@session.id)
+  - @bar = v_bar_athlete(@session.id)
+  = image_tag @line.to_url
+  = image_tag @bar.to_url
+  -# @arr =  make_sets_array(@session.id)
   =# debug @arr
   %h= @arr
   %br
