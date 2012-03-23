@@ -2,29 +2,71 @@
   .row-fluid
     - if current_user.is_coach
       %h1 Sessions
-      %h4= link_to 'New Session', new_tsession_path
+      %h4
+        = link_to 'Create Session', new_tsession_path
+        |
+        %span#allhead{:style => "color: #01939A"}= ' All'
+        |
+        %span#donehead{:style => "color: #01939A"}= 'Done'
+        |
+        %span#pendinghead{:style => "color: #01939A"}= 'Pending'
       %br
       #athletebox.span10
-        %table
-          %tr
-            %th Training Day
-            %th Template
-            %th User
-            %th Comments
-            %th 
-            %th Actions
-            %th
+        #all
+          %table
+            %tr
+              %th Training Day
+              %th Template
+              %th User
+              %th Comments
+              %th 
+              %th Actions
+              %th
 
-          - @templates.each do |t|
-            - t.tsession.each do |session|
-              %tr
-                %td= session.trainingday
-                %td= session.template.name
-                %td= session.user.email
-                %td= session.comments
-                %td= link_to 'Show', session
-                %td= link_to 'Edit', edit_tsession_path(session)
-                %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
+            - @templates.each do |t|
+              - t.tsession.each do |session|
+                %tr
+                  %td= session.trainingday
+                  %td= session.template.name
+                  %td= session.user.email
+                  %td= session.comments
+                  %td= link_to 'Show', session
+                  %td= link_to 'Edit', edit_tsession_path(session)
+                  %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
+        #done
+          %table
+            %tr
+              %th Training Day
+              %th Template
+              %th User
+              %th Comments
+              %th Actions
+
+            - @templates.each do |t|
+              - t.tsession.done.each do |session|
+                %tr
+                  %td= session.trainingday
+                  %td= session.template.name
+                  %td= session.user.email
+                  %td= session.comments
+                  %td= link_to 'Show', session
+        #pending
+          %table
+            %tr
+              %th Training Day
+              %th Template
+              %th User
+              %th Comments
+              %th Actions
+
+            - @templates.each do |t|
+              - t.tsession.pending.each do |session|
+                %tr
+                  %td= session.trainingday
+                  %td= session.template.name
+                  %td= session.user.email
+                  %td= session.comments
+                  %td= link_to 'Show', session
     - else
       %h1 Pending Training Sessions
       - if !@pending.empty?
