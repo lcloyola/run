@@ -3,18 +3,25 @@
 - if @user.id == current_user.id
   %h3= link_to "edit my profile", "/users/edit"
 %br
-%p= @user.about
-- if @user.is_coach
-  %b My Athletes
-  %ul
-    - @user.my_athletes.each do |a|
-      %li= a.email
-  %b My Teams
-  %ul
-    - @user.my_team.each do |t|
-      %li= t.name
-- if @user.is_athlete
-  %b My Teams
-  %ul
-    - @user.membership.each do |m|
-      %li= m.team.name
+.container-fluid
+  .row-fluid
+    .span6
+      %p= @user.about
+      - if @user.is_athlete
+        - @s = pie_chart_athlete(@user.id)
+        = image_tag @s.to_url
+    .span4
+      - if @user.is_coach
+        %b My Athletes
+        %ul
+          - @user.my_athletes.each do |a|
+            %li= a.email
+        %b My Teams
+        %ul
+          - @user.my_team.each do |t|
+            %li= t.name
+      - if @user.is_athlete
+        %b My Teams
+        %ul
+          - @user.membership.each do |m|
+            %li= m.team.name
