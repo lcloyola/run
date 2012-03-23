@@ -20,13 +20,14 @@ Run::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "myregistrations" } do
     match '/users/sign_up/:type' => 'myregistrations#new'
     match '/users/create_athlete' => 'myregistrations#create_athlete'
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
   match "/home" => "home#index", as: "user_root" # new format of setting root paths for devise
   
   match '/performances/index' => 'performances#index'
   match '/performances/athlete_sessions/:id' => 'performances#athlete_sessions'
-    match '/users/help_editprof' => 'users#help_editprof'  
+  match '/users/help_editprof' => 'users#help_editprof'  
   match '/users/help_enath' => 'users#help_enath'  
   match '/users/help_crteam' => 'users#help_crteam'  
   match '/users/help_newses' => 'users#help_newses'  

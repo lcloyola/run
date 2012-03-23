@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#content").css("display", "none");
  
-    $("#content").fadeIn(650);
+    $("#content").fadeIn(700);
  
     $("a").click(function(event){
         event.preventDefault();
