@@ -20,3 +20,54 @@
   <%= render :partial => "devise/shared/links" %>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+<div class="center">
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-stacked"}) do |f| %>
+  <%= devise_error_messages! %>
+  <div><br />
+  <%- if user_signed_in? && current_user.is_coach %>
+    <h2>Create Athlete</h2>
+    <hr>
+      <%= f.hidden_field :coach_id, :value => current_user.id %>
+      <%= f.hidden_field(:is_athlete, :value => TRUE)%>
+      <%= f.hidden_field(:is_coach, :value => FALSE)%>
+  <%- elsif params[:type] == 'athlete'%>
+    <h2>Sign up as athlete</h2>
+    <%= f.label :Choose_Coach %>
+    <%= collection_select :user, :coach_id, User.coaches, :id, :email %>
+    <%= f.hidden_field(:is_athlete, :value => TRUE) %>
+    <%= f.hidden_field(:is_coach, :value => FALSE) %>
+  <%- else %>
+    <h2>Sign up as coach</h2>
+  <%end%>  
+  </div>
+  <div>
+  <%= f.text_field :first , :placeholder => 'first name' %></div>
+  <div>
+  <%= f.text_field :last, :placeholder => 'last name'  %></div>
+  <div>
+  <%= f.email_field :email, :placeholder => 'email' %></div>
+
+  <div>
+  <%= f.password_field :password, :placeholder => 'password' %></div>
+
+  <div>
+  <%= f.password_field :password_confirmation, :placeholder => 'confirm password' %></div>
+  <br>
+  <div><%= f.submit "Sign up", :class=> 'button-gray' %></div>
+  <hr>
+    <%- if !user_signed_in?%>
+      <%= render :partial => "devise/shared/links" %>
+    <%end%>
+  </div>
+
+<% end %>
