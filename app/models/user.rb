@@ -36,4 +36,11 @@ class User < ActiveRecord::Base
   def session_per_template(template = nil)
     return Tsession.where('user_id = ? AND template_id = ?', self.id, template)
   end
+  
+  def currently_coach
+    if self.as_coach || (!self.is_athlete && self.is_coach)
+      return true
+    end
+    return false
+  end
 end
