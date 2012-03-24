@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
+  def switch
+    if current_user.as_coach
+      current_user.as_coach = false
+    else
+      current_user.as_coach = true
+    end
+    current_user.save
+    respond_to do |format|
+      format.html { redirect_to '/', notice: 'Successfully switched role.' }
+    end
+  end
   def profile
     @user = User.find(params[:id])
     @title = "Profile"
