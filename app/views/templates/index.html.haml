@@ -8,36 +8,35 @@
       =link_to 'New Category', new_category_path
       )
     %br
-    #athletebox.span10
-      - @categories.each do |category|
-        %h2 
-          = category.name
-          %p
-            = link_to '(edit', edit_category_path(category)
-            \|
-            = link_to 'show)', category_path(category)          
-        %table{:id => "sortable", :class => "zebra-striped tablesorter"}
-          %tr
-            %th{:style=>'width: 100px'} Name
-            %th{:style=>'width: 100px'} Name Unit
-            %th{:style=>'width: 100px'} Name Sets
-            %th{:style=>'width: 100px'} Name Repetitions per Set
-            %th{:style=>'width: 100px'} Name Interval per Set (mins)
-            %th{:style=>'width: 100px'} Name Category
-            %th{:style=>'width: 100px',:colspan => 3} Action
-          %tbody
-            - category.template.each do |template|
-              %tr
-                %td= template.name
-                %td= template.unit
-                %td= template.sets
-                %td= template.reps
-                %td= template.interval
-                %td= template.category.name
-                %td= link_to 'Show', template
-                %td= link_to 'Edit', edit_template_path(template)
-                %td= link_to 'Destroy', template, :confirm => 'Are you sure?', :method => :delete
+    - @categories.each do |category|
+      %h2 
+        = category.name
+        %p
+          = link_to '(edit', edit_category_path(category)
+          \|
+          = link_to 'show)', category_path(category)          
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th{:style=>'width: 100px'} Name
+          %th{:style=>'width: 100px'} Name Unit
+          %th{:style=>'width: 100px'} Name Sets
+          %th{:style=>'width: 100px'} Name Repetitions per Set
+          %th{:style=>'width: 100px'} Name Interval per Set (mins)
+          %th{:style=>'width: 100px'} Name Category
+          %th{:style=>'width: 100px',:colspan => 3} Action
+        %tbody
+          - category.template.each do |template|
+            %tr
+              %td= template.name
+              %td= template.unit
+              %td= template.sets
+              %td= template.reps
+              %td= template.interval
+              %td= template.category.name
+              %td= link_to 'Show', template
+              %td= link_to 'Edit', edit_template_path(template)
+              %td= link_to 'Destroy', template, :confirm => 'Are you sure?', :method => :delete
 #a{:style=>"clear:both"}
-           
-   
+         
+ 
 

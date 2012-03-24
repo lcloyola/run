@@ -11,88 +11,87 @@
         |
         %span#pendinghead{:style => "color: #01939A"}= 'Pending'
       %br
-      #athletebox.span10
-        #all
-          %table
-            %tr
-              %th Training Day
-              %th Template
-              %th User
-              %th Comments
-              %th 
-              %th Actions
-              %th
-
-            - @templates.each do |t|
-              - t.tsession.each do |session|
-                %tr
-                  %td= session.trainingday
-                  %td= session.template.name
-                  %td= session.user.email
-                  %td= session.comments
-                  %td= link_to 'Show', session
-                  %td= link_to 'Edit', edit_tsession_path(session)
-                  %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
-        #done
-          %table
-            %tr
-              %th Training Day
-              %th Template
-              %th User
-              %th Comments
-              %th Actions
-
-            - @templates.each do |t|
-              - t.tsession.done.each do |session|
-                %tr
-                  %td= session.trainingday
-                  %td= session.template.name
-                  %td= session.user.email
-                  %td= session.comments
-                  %td= link_to 'Show', session
-        #pending
-          %table
-            %tr
-              %th Training Day
-              %th Template
-              %th User
-              %th Comments
-              %th Actions
-
-            - @templates.each do |t|
-              - t.tsession.pending.each do |session|
-                %tr
-                  %td= session.trainingday
-                  %td= session.template.name
-                  %td= session.user.email
-                  %td= session.comments
-                  %td= link_to 'Show', session
-    - else
-      %h1 Pending Training Sessions
-      - if !@pending.empty?
-        %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+      #all
+        %table
           %tr
-            %th Date
-            %th Training
-            %th Unit
-            %th Repetitions
-            %th Sets
-            %th Intervals (mins) 
-            %th Comments          
-            %th Action
-          %tbody
-            - @pending.each do |s|
+            %th Training Day
+            %th Template
+            %th User
+            %th Comments
+            %th 
+            %th Actions
+            %th
+
+          - @templates.each do |t|
+            - t.tsession.each do |session|
               %tr
-                %td= s.trainingday
-                %td= s.template.name
-                %td= s.template.unit
-                %td= s.template.reps
-                %td= s.template.sets
-                %td= s.template.interval
-                %td= s.comments
-                - unless s.trainingday >  Date.today
-                  %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
-      - else
-        %p no unupdated training logs
-      %br
+                %td= session.trainingday
+                %td= session.template.name
+                %td= session.user.email
+                %td= session.comments
+                %td= link_to 'Show', session
+                %td= link_to 'Edit', edit_tsession_path(session)
+                %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
+      #done
+        %table
+          %tr
+            %th Training Day
+            %th Template
+            %th User
+            %th Comments
+            %th Actions
+
+          - @templates.each do |t|
+            - t.tsession.done.each do |session|
+              %tr
+                %td= session.trainingday
+                %td= session.template.name
+                %td= session.user.email
+                %td= session.comments
+                %td= link_to 'Show', session
+      #pending
+        %table
+          %tr
+            %th Training Day
+            %th Template
+            %th User
+            %th Comments
+            %th Actions
+
+          - @templates.each do |t|
+            - t.tsession.pending.each do |session|
+              %tr
+                %td= session.trainingday
+                %td= session.template.name
+                %td= session.user.email
+                %td= session.comments
+                %td= link_to 'Show', session
+  - else
+    %h1 Pending Training Sessions
+    - if !@pending.empty?
+      %table{:id => "sortable", :class => "zebra-striped tablesorter"}
+        %tr
+          %th Date
+          %th Training
+          %th Unit
+          %th Repetitions
+          %th Sets
+          %th Intervals (mins) 
+          %th Comments          
+          %th Action
+        %tbody
+          - @pending.each do |s|
+            %tr
+              %td= s.trainingday
+              %td= s.template.name
+              %td= s.template.unit
+              %td= s.template.reps
+              %td= s.template.sets
+              %td= s.template.interval
+              %td= s.comments
+              - unless s.trainingday >  Date.today
+                %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
+    - else
+      %p no unupdated training logs
+    %br
 #a{:style=>"clear:both"}
