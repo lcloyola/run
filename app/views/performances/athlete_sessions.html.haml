@@ -1,6 +1,6 @@
 %h1 Athlete Performance: Per Session
 %h2= @athlete.fullname
-%h3= @athlete.email
+%br
 
 - @s = pie_chart_athlete(@athlete.id)
 = image_tag @s.to_url
