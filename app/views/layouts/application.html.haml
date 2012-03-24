@@ -28,7 +28,7 @@
           #sidepane.span2
             #navigation
               %ul.tab
-                - if current_user.is_coach
+                - if current_user.as_coach || (!current_user.is_athlete && current_user.is_coach)
                   - if @title == "Template"
                     %li.active#current= link_to "Templates", '/templates'
                   - else

@@ -1,6 +1,6 @@
 .container-fluid
   .row-fluid
-    - if current_user.is_coach
+    - if current_user.as_coach || (!current_user.is_athlete && current_user.is_coach)
       %h1 Sessions
       %h4
         = link_to 'Create Session', new_tsession_path

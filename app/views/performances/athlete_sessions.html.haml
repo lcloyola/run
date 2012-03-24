@@ -2,8 +2,9 @@
 %h2= @athlete.fullname
 %br
 
-- @s = pie_chart_athlete(@athlete.id)
-= image_tag @s.to_url
+- unless @athlete.tsessions.empty?
+  - @s = pie_chart_athlete(@athlete.id)
+  = image_tag @s.to_url
 
 %h3
   %span#allhead{:style => "color: #01939A"}= 'All'
@@ -50,3 +51,5 @@
           %td= s.template.name
           - if (s.trainingday <  Date.today) && (@athlete.id == current_user.id)
             %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
+- if @athlete.tsessions.empty?
+  %p{:style => "text-align:center"} No Sessions Found.

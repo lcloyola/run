@@ -7,11 +7,11 @@
   .row-fluid
     .span6
       %p= @user.about
-      - if @user.is_athlete
+      - if @user.is_athlete && !@user.tsessions.empty?
         - @s = pie_chart_athlete(@user.id)
         = image_tag @s.to_url
     .span4
-      - if @user.is_coach
+      - if current_user.is_coach
         %b My Athletes
         %ul
           - @user.my_athletes.each do |a|
@@ -20,8 +20,11 @@
         %ul
           - @user.my_team.each do |t|
             %li= t.name
-      - if @user.is_athlete
-        %b My Teams
+      - if @user.is_athlete && !@user.teams.empty?
+        - if @user.is_coach
+          %b My Teams (as athlete)
+        - else
+          %b My Teams
         %ul
           - @user.membership.each do |m|
             %li= m.team.name
