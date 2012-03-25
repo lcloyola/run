@@ -1,6 +1,6 @@
 .container-fluid
   .row-fluid
-    - if current_user.as_coach || (!current_user.is_athlete && current_user.is_coach)
+    - if current_user.currently_coach
       %h1 Sessions
       %h4
         = link_to 'Create Session', new_tsession_path
@@ -66,7 +66,7 @@
                 %td= session.user.email
                 %td= session.comments
                 %td= link_to 'Show', session
-  - else
+  - if !current_user.currently_coach && current_user.is_athlete
     %h1 Pending Training Sessions
     - if !@pending.empty?
       %table{:id => "sortable", :class => "zebra-striped tablesorter"}

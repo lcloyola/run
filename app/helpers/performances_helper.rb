@@ -86,7 +86,7 @@ module PerformancesHelper
     i = 0
     values.each do |set|
       color = "%06x" % (rand * 0xffffff)
-      lc.data "Set#{i + 1}", set, color
+      lc.data "Session#{i + 1}", set, color
       i = i + 1
     end
 	  lc.axis :y, :range => [0, max2d(values)], :font_size => 10, :alignment => :center
