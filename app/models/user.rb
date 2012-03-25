@@ -43,4 +43,17 @@ class User < ActiveRecord::Base
     end
     return false
   end
+  
+  def athlete_template_sessions(template_id = nil)
+    return Tsession.where('user_id = ? AND template_id = ? AND is_done = ?', self.id, template_id, true)
+  end
+  
+  def template_arr_reps(template_id = nil)
+    arr = Array.new
+    @sessions = athlete_template_sessions(template_id)
+    @sessions.each do |s|
+      arr << s.ave_rep
+    end
+    return arr
+  end
 end

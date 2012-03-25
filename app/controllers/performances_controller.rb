@@ -10,6 +10,7 @@ class PerformancesController < ApplicationController
   def athlete_sessions
     @title = "Performance"
     @athlete = User.find(params[:id])
+    @templates = Template.all
     @sessions = Tsession.where('user_id = ? AND is_done = ?', @athlete.id, true)
     respond_to do |format|
       format.html

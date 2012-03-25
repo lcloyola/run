@@ -17,11 +17,13 @@
             %thead
               %th Email
               %th Name
-              %th{:colspan => 2} Action
+              %th Action
             %tbody
               - @athletes.each do |a|
                 %tr
                   %td= a.email
                   %td= a.fullname
-                  %td= link_to 'per session', "/performances/athlete_sessions/#{a.id}"
-                  %td= link_to 'graph per template', '#'
+                  - if !a.tsessions.done.empty?
+                    %td= link_to 'view', "/performances/athlete_sessions/#{a.id}"
+                  - else
+                    %td No sessions found

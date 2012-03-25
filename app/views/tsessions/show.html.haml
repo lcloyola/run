@@ -31,8 +31,8 @@
       - if @session.is_done
         - @line = line_graph_athlete(@session.id, @session.rep_arr)
         - @bar = v_bar_athlete(@session.id, @session.set_arr)
-        - @line2 = line_graph_athlete(@session.id, @session.ave_rep)
-        - @bar2 = v_bar_athlete(@session.id, @session.ave_rep)
+        - @line2 = line_graph_athlete(@session.id, [@session.ave_rep])
+        - @bar2 = v_bar_athlete(@session.id, [@session.ave_rep])
         #gallery_container2.ad-gallery{:style => "text-align: center; margin: 0 auto;"}
           .ad-nav
             .ad-thumbs

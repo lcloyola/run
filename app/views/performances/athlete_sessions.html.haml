@@ -1,11 +1,27 @@
 %h1 Athlete Performance: Per Session
 %h2= @athlete.fullname
 %br
+.container-fluid
+  .row-fluid
+    - unless @athlete.tsessions.done.empty?
+      .span6
+        - @s = pie_chart_athlete(@athlete.id)
+        %a#gallery{:rel=> "lightbox-graphs", :href => @s.to_url, :title => "Template Use Frequency"}
+          = image_tag @s.to_url
+      .span5
+        #gallery_container2.ad-gallery{:style => "text-align: center; margin: 0 auto;"}
+          .ad-nav
+            .ad-thumbs
+              %ul.ad-thumb-list
+                - @templates.each do |t|
+                  - if !@athlete.athlete_template_sessions(t.id).empty?
+                    - @line = line_graph_athlete_template(t.id, @athlete.template_arr_reps(t.id))
+                    %li
+                      %a#gallery{:rel=> "lightbox-graphs", :href => @line.to_url, :title => "Time per Repetitions"}
+                        = image_tag @line.to_url, :width => 180
 
-- unless @athlete.tsessions.empty?
-  - @s = pie_chart_athlete(@athlete.id)
-  = image_tag @s.to_url
-
+      #a{:style=>"clear:both"}
+        
 %h3
   - if current_user.currently_coach
     %span#allhead{:style => "color: #01939A"}= 'All'
@@ -30,7 +46,10 @@
         %tr
           %td= s.trainingday
           %td= s.template.name
-          %td= link_to 'logs', "/tsessions/#{s.id}"
+          - if s.is_done
+            %td= link_to 'logs and graphs', "/tsessions/#{s.id}"
+          - else
+            %td= link_to 'logs', "/tsessions/#{s.id}"
 #done
   %table
     %thead
