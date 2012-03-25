@@ -7,11 +7,18 @@
   = image_tag @s.to_url
 
 %h3
-  %span#allhead{:style => "color: #01939A"}= 'All'
-  |
-  %span#donehead{:style => "color: #01939A"}= 'Done'
-  |
-  %span#pendinghead{:style => "color: #01939A"}= 'Pending'
+  - if current_user.currently_coach
+    %span#allhead{:style => "color: #01939A"}= 'All'
+    |
+    %span#donehead{:style => "color: #01939A"}= 'Done'
+    |
+    %span#pendinghead{:style => "color: #01939A"}= 'Pending'
+  - else
+    %span#allhead{:style => "color: #FFA900"}= 'All'
+    |
+    %span#donehead{:style => "color: #FFA900"}= 'Done'
+    |
+    %span#pendinghead{:style => "color: #FFA900"}= 'Pending'
 #all
   %table
     %thead
