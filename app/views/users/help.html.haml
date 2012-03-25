@@ -6,7 +6,7 @@
 		%br
 		- if @current_user.is_coach && @current_user.is_athlete?
 			%p
-				[coach]
+				%h4 [coach]
 				%br= link_to'How do I edit my profile?', '/users/help_editprof' 
 				%br= link_to'How do I enroll an athlete?', '/users/help_enath' 
 				%br= link_to'How do I create a team?', '/users/help_crteam'
@@ -18,7 +18,7 @@
 				%br= link_to'How do I view all my athletes\' / teams\' performances?', '/users/help_viewperf'
 				%br= link_to'How do I save my athletes\' / teams\' performance statistics in a PDF?', '/users/help_viewperf'
 				%br
-				[athlete]
+				%h4 [athlete]
 				%br= link_to'How do I add data to my training session?', '/users/help_adddata' 
 				%br= link_to'How do I view my pending training sessions?', '/users/help_viewses'
 				%br= link_to'How do I view my performance?', '/users/help_atview'
