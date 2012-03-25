@@ -4,7 +4,7 @@ $(document).ready(function() {
     $("#content").fadeIn(700);
 
     if (!coach) {
-      $("#main a").css("color", "#FF7A00");
+      $("#main a").css("color", "#FFA900");
     }
     
     $("a").click(function(event){

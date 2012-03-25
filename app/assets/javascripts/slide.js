@@ -10,8 +10,14 @@ $(document).ready(function() {
       event.preventDefault();
       
       $(this).css("color", "#534741");
-      $("#donehead").css("color", "#01939A");
-      $("#pendinghead").css("color", "#01939A");
+      if(!coach){
+        $("#donehead").css("color", "#FFA900");
+        $("#pendinghead").css("color", "#FFA900");
+      }
+      else{
+        $("#donehead").css("color", "#01939A");
+        $("#pendinghead").css("color", "#01939A");
+      }
 
       $("#pending").slideUp('slow', function() {});
       $("#done").slideUp('slow', function() {});
@@ -21,8 +27,14 @@ $(document).ready(function() {
     $("#donehead").click(function(event){
       event.preventDefault();
       $(this).css("color", "#534741");
-      $("#allhead").css("color", "#01939A");
-      $("#pendinghead").css("color", "#01939A");
+      if(!coach){
+        $("#allhead").css("color", "#FFA900");
+        $("#pendinghead").css("color", "#FFA900");
+      }
+      else{
+        $("#allhead").css("color", "#01939A");
+        $("#pendinghead").css("color", "#01939A");
+      }
       
       $("#all").slideUp('slow', function() {});
       $("#done").toggle("slide", {}, 1000);
@@ -30,8 +42,14 @@ $(document).ready(function() {
     $("#pendinghead").click(function(event){
       event.preventDefault();
       $(this).css("color", "#534741");
-      $("#donehead").css("color", "#01939A");
-      $("#allhead").css("color", "#01939A");
+      if(!coach){
+        $("#donehead").css("color", "#FFA900");
+        $("#allhead").css("color", "#FFA900");
+      }
+      else{
+        $("#donehead").css("color", "#01939A");
+        $("#allhead").css("color", "#01939A");
+      }
       
       $("#all").slideUp('slow', function() {});
       $("#all").css("display", "none");
