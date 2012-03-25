@@ -29,7 +29,24 @@ class UsersController < ApplicationController
       format.html
     end
   end
-  
+  def help
+    @title = 'Help'
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def help
+    @title = 'Help'
+    respond_to do |format|    
+      format.html
+    end
+  end
+  def help
+    @title = 'Help'
+    respond_to do |format|    
+      format.html
+    end
+  end
   def helpnew
     @title = 'Help'
     respond_to do |format|    
