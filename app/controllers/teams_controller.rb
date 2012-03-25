@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
     @title = 'Athlete'
     @team = Team.find(params[:id])
     @athletes = User.where('coach_id = ?', current_user.id)
-    
+    @templates = Template.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }

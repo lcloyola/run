@@ -8,7 +8,7 @@
           %h2 Team Performance
           - current_user.my_team.each do |t|
             %b
-              %li= link_to t.name, '#'
+              %li= link_to t.name, "/performances/team_templates/#{t.id}"
     #athletebox.span9
       - if !@athletes.nil?
         %h2#athlete_performance_head Athletes Performance

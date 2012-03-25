@@ -56,4 +56,13 @@ class User < ActiveRecord::Base
     end
     return arr
   end
+  
+  def ave_rep(template_id = nil)
+    @template = Template.find(template_id)
+    arr = []
+    self.template_arr_reps(template_id).each do |rep|
+      arr << ( rep.inject{|sum,x| sum + x } / @template.reps.to_f)
+    end
+    return arr
+  end
 end

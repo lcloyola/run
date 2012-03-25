@@ -27,6 +27,7 @@ Run::Application.routes.draw do
 
   match '/users/switch' => 'users#switch'  
   match '/performances/index' => 'performances#index'
+  match '/performances/team_templates/:id' => 'performances#team_templates'
   match '/performances/athlete_sessions/:id' => 'performances#athlete_sessions'
   match '/users/help_adddata' => 'users#help_adddata'   
   match '/users/help_atview' => 'users#help_atview'  

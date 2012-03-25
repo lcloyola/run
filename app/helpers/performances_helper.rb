@@ -41,7 +41,11 @@ module PerformancesHelper
   def max2d(arr = nil)
     max = []
     arr.each do |a|
-      max << a.max
+      if a.max.nil?
+        max << 0
+      else
+        max << a.max
+      end
     end
     return max.max.to_int
   end
@@ -87,6 +91,21 @@ module PerformancesHelper
     values.each do |set|
       color = "%06x" % (rand * 0xffffff)
       lc.data "Session#{i + 1}", set, color
+      i = i + 1
+    end
+	  lc.axis :y, :range => [0, max2d(values)], :font_size => 10, :alignment => :center
+	  lc.axis :x, :labels => [*1..@t.reps], :font_size => 10, :alignment => :center
+	  lc.show_legend = true
+  	return lc
+  end
+  def line_graph_team_template(template_id = nil, values = nil)
+    @t = Template.find(template_id)
+    require 'google_chart'
+	  lc = GoogleChart::LineChart.new("470x250", "Ave Value vs Rep for #{@t.name}", false)
+    i = 0
+    values.each do |set|
+      color = "%06x" % (rand * 0xffffff)
+      lc.data "#{User.find(set[1])}", set[0], color
       i = i + 1
     end
 	  lc.axis :y, :range => [0, max2d(values)], :font_size => 10, :alignment => :center
