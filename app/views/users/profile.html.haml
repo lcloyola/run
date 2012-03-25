@@ -11,7 +11,7 @@
         - @s = pie_chart_athlete(@user.id)
         = image_tag @s.to_url
     .span4
-      - if current_user.is_coach
+      - if @user.is_coach
         %b My Athletes
         %ul
           - @user.my_athletes.each do |a|
