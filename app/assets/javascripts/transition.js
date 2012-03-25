@@ -8,7 +8,7 @@ $(document).ready(function() {
     }
     
     $("a").click(function(event){
-      if ((this.id != 'gallery') && (this.id != 'lbPrevLink') && (this.id != 'lbNextLink') && (this.id != 'lbCloseLink')) {
+      if ((this.id != 'gallery') && (this.id != 'lbPrevLink') && (this.id != 'lbNextLink') && (this.id != 'lbCloseLink') && (this.attr('class') != 'ui-multiselect')) {
         event.preventDefault();
         linkLocation = this.href;
         $("body").fadeOut(350, redirectPage);

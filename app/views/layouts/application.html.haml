@@ -46,7 +46,14 @@
                     %li.active#current= link_to "Performance", '/performances/index'
                   - else
                     %li= link_to "Performance", '/performances/index'
-
+                  - if @title == "Profile"
+                    %li.active#current= link_to "Profile", "/users/profile/#{current_user.id}"
+                  - else
+                    %li= link_to "Profile", "/users/profile/#{current_user.id}"
+                  - if @title == "Help"
+                    %li.active#current= link_to "Help", '/users/help'
+                  -else
+                    %li= link_to "Help", '/users/help'
                 - else
                   - if @title == "Session"
                     %li.active-athlete#current-athlete= link_to "New Trainings", '/tsessions'
@@ -56,14 +63,14 @@
                     %li.active-athlete#current-athlete= link_to "Performance", "/performances/athlete_sessions/#{current_user.id}"
                   - else
                     %li= link_to "Performance", "/performances/athlete_sessions/#{current_user.id}"
-                - if @title == "Profile"
-                  %li.active-athlete#current-athlete= link_to "Profile", "/users/profile/#{current_user.id}"
-                - else
-                  %li= link_to "Profile", "/users/profile/#{current_user.id}"
-                - if @title == "Help"
-                  %li.active-athlete#current-athlete= link_to "Help", '/users/help'
-                -else
-                  %li= link_to "Help", '/users/help'
+                  - if @title == "Profile"
+                    %li.active-athlete#current-athlete= link_to "Profile", "/users/profile/#{current_user.id}"
+                  - else
+                    %li= link_to "Profile", "/users/profile/#{current_user.id}"
+                  - if @title == "Help"
+                    %li.active-athlete#current-athlete= link_to "Help", '/users/help'
+                  -else
+                    %li= link_to "Help", '/users/help'
           #main.span10
             #content
               = yield
