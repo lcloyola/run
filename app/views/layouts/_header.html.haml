@@ -1,7 +1,7 @@
 .header-inner
   = link_to image_tag('logos.png'), root_path
   .dash
-    -if @user.photo.exists? then
+    -if current_user.photo.exists? then
       = image_tag current_user.photo.url(:thumb), :width => 40
     &nbsp;
     = link_to current_user.email, edit_user_registration_path
