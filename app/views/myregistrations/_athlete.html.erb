@@ -2,7 +2,7 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-stacked"}) do |f| %>
   <%= devise_error_messages! %>
   <div><br />
-    <h2>Sign up as athlete</h2>
+    <h1 style="text-align: center; color: #707070">Sign up as athlete</h1>
     <%= f.label :Choose_Coach %>
     <%= collection_select :user, :coach_id, User.coaches, :id, :email %>
     <%= f.hidden_field(:is_athlete, :value => TRUE) %>
