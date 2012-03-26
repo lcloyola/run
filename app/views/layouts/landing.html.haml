@@ -14,49 +14,48 @@
     .header-landing
       .header-inner
         = link_to image_tag('logost.png'), root_path
-    #wrap.container-fluid
-      #inner-wrap.row-fluid
-        #landing.container_16
-          #slider
-            %ol
-              %li{:name => "index"}
-                %h2
-                  %span
-                    Are you in?
-                %div
-                  .grid_8
-                    = image_tag 'emblem.png', class: 'emblem'
-                  #landing-right.grid_9
-                    %font{ :size => 5, :color => '#998877' }
-                      %i
-                        What is RUN?
-                    %br
-                    Run is an athlete management application.
-                    
-              %li{:name => "login"}
-                %h2
-                  %span
-                    | Log-in |
-                %div
-                  %center
-                    = render '/devise/sessions/new'
-                  .clear
-                    
-              %li{:name => "signup"}
-                %h2
-                  %span
-                    | Sign-up |
-                %div
-                  %center
-                    = render '/myregistrations/new'                  
+    .container-fluid
+      .row-fluid{:style => "margin: 0 auto"}
+        #slider{:style => "margin: 0 auto"}
+          %ol
+            %li{:name => "index"}
+              %h2
+                %span
+                  Are you in?
+              %div
+                .grid_8
+                  = image_tag 'emblem.png', class: 'emblem'
+                #landing-right.grid_9
+                  %font{ :size => 5, :color => '#998877' }
+                    %i
+                      What is RUN?
+                  %br
+                  Run is an athlete management application.
+                  
+            %li{:name => "login"}
+              %h2
+                %span
+                  | Log-in |
+              %div
+                %center
+                  = render '/devise/sessions/new'
+                .clear
+                  
+            %li{:name => "signup"}
+              %h2
+                %span
+                  | Sign-up |
+              %div
+                %center
+                  = render '/myregistrations/new'                  
 
-              %li{:name => "signup as athlete"}
-                %h2
-                  %span
-                    | Sign-up as Athlete |
-                %div
-                  %center
-                    = render '/myregistrations/athlete'                    
+            %li{:name => "signup as athlete"}
+              %h2
+                %span
+                  | Sign-up as Athlete |
+              %div
+                %center
+                  = render '/myregistrations/athlete'                    
 
     %footer.footer
       .center &copy; #{Time.now.year} teamRUN (Cola, Loyola, Pineda, Santos)
