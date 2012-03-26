@@ -6,7 +6,7 @@
       %ul
       - @team.members.each do |m|
         %li= m.user.fullname
-    .span5
+    .span7
       #gallery_container2.ad-gallery{:style => "text-align: center; margin: 0 auto;"}
         .ad-nav
           .ad-thumbs
@@ -17,4 +17,4 @@
                     - @line = line_graph_athlete_template(t.id, a.user.template_arr_reps(t.id))
                     %li
                       %a#gallery{:rel=> "lightbox-graphs", :href => @line.to_url, :title => "Time per Repetitions; #{a.user.fullname}"}
-                        = image_tag @line.to_url, :width => 180
+                        = image_tag @line.to_url, :width => 200

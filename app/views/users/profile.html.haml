@@ -6,6 +6,8 @@
 .container-fluid
   .row-fluid
     .span6
+      -if @user.photo.exists? then
+        = image_tag @user.photo.url(:medium)
       %p= @user.about
       - if @user.is_athlete && !@user.tsessions.empty?
         - @s = pie_chart_athlete(@user.id)
