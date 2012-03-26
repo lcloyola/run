@@ -92,6 +92,7 @@
               - unless s.trainingday >  Date.today
                 %td= link_to 'Update', "/tsessions/#{s.id}/edit_log"
     - else
+      %br
       %p no unupdated training logs
     %br
 #a{:style=>"clear:both"}

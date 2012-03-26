@@ -49,7 +49,14 @@
                 %div
                   %center
                     = render '/myregistrations/new'                  
-                    
+
+              %li{:name => "signup as athlete"}
+                %h2
+                  %span
+                    | Sign-up as Athlete |
+                %div
+                  %center
+                    = render '/myregistrations/athlete'                    
 
     %footer.footer
       .center &copy; #{Time.now.year} teamRUN (Cola, Loyola, Pineda, Santos)
