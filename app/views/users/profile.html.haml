@@ -1,7 +1,8 @@
 %h1= @user.fullname
 %h2= @user.email
 - if @user.id == current_user.id
-  %h3= link_to "edit my profile", "/users/edit"
+  = link_to "Edit my profile", "/users/edit"
+  %br
 %br
 .container-fluid
   .row-fluid
@@ -30,3 +31,4 @@
         %ul
           - @user.membership.each do |m|
             %li= m.team.name
+	
