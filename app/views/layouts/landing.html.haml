@@ -55,8 +55,14 @@
                   | Sign-up as Athlete |
               %div
                 %center
-                  = render '/myregistrations/athlete'                    
-
+                  = render '/myregistrations/athlete'
+            %li{:name => "others"}
+              %h2
+                %span
+                  | Others |
+              %div
+                %center
+                  = yield
     %footer.footer
       .center &copy; #{Time.now.year} teamRUN (Cola, Loyola, Pineda, Santos)
 
