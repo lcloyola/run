@@ -3,19 +3,19 @@
   <%= devise_error_messages! %>
   <div><br />
   <%- if user_signed_in? && current_user.is_coach %>
-    <h2>Create Athlete</h2>
+    <h1 style="text-align: center; color: #707070">Create Athlete</h1>
     <hr>
       <%= f.hidden_field :coach_id, :value => current_user.id %>
       <%= f.hidden_field(:is_athlete, :value => TRUE)%>
       <%= f.hidden_field(:is_coach, :value => FALSE)%>
   <%- elsif params[:type] == 'athlete'%>
-    <h2>Sign up as athlete</h2>
+    <h1 style="text-align: center; color: #707070">Sign-Up as Athlete</h1>
     <%= f.label :Choose_Coach %>
     <%= collection_select :user, :coach_id, User.coaches, :id, :email %>
     <%= f.hidden_field(:is_athlete, :value => TRUE) %>
     <%= f.hidden_field(:is_coach, :value => FALSE) %>
   <%- else %>
-    <h2>Sign up as coach</h2>
+    <h1 style="text-align: center; color: #707070">Sign-Up as Coach</h1>
   <%end%>  
   </div>
   <div>
