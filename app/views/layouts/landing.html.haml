@@ -3,7 +3,8 @@
     %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html' }
     %meta{ :name => 'robots', :content => 'index, follow' }
     %link{ :href => 'http://fonts.googleapis.com/css?family=PT+Sans', :rel => 'stylesheet', :type => 'text/css' }
-    %title Run
+    %script{ :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'}
+    %title RUN: Runner's Ultimate Notebook
 
     = stylesheet_link_tag "landing", media: "screen"
     = javascript_include_tag "application"
@@ -11,15 +12,46 @@
 
   %body
     .header-landing
+      .header-inner
+        = link_to image_tag('logost.png'), root_path
     #wrap.container-fluid
       #inner-wrap.row-fluid
         #landing.container_16
-          .grid_8
-            = image_tag 'emblem.png', class: 'emblem'
-          #landing-right.grid_8
-            = yield
-          .clear
+          #slider
+            %ol
+              %li{:name => "index"}
+                %h2
+                  %span
+                    Are you in?
+                %div
+                  .grid_8
+                    = image_tag 'emblem.png', class: 'emblem'
+                  #landing-right.grid_9
+                    %font{ :size => 5, :color => '#998877' }
+                      %i
+                        What is RUN?
+                    %br
+                    Run is an athlete management application.
+                    
+              %li{:name => "login"}
+                %h2
+                  %span
+                    | Log-in |
+                %div
+                  %center
+                    = yield
+                  .clear
+                    
+              %li{:name => "signup"}
+                %h2
+                  %span
+                    | Sign-up |
+                %div
 
     %footer.footer
-      .center &copy; #{Time.now.year} Cola, Loyola, Pineda, Santos
+      .center &copy; #{Time.now.year} teamRUN (Cola, Loyola, Pineda, Santos)
 
+    :javascript
+      (function($) {
+      $('#slider').liteAccordion({"theme":"basic", linkable : true, "easing":"swing","containerHeight":400,"rounded":false});
+      })(jQuery);

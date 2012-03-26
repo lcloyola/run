@@ -6,6 +6,7 @@
  *= require "bootstrap"
  *= require "bootstrap_responsive"
  *= require "landing_style"
+ *= require "liteaccordion"
  *= require_self
 */
 

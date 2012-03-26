@@ -1,0 +1,111 @@
+@charset 'utf-8';
+/*************************************************!
+*
+*   project:    liteAccordion - a horizontal accordion plugin for jQuery
+*   author:     Nicola Hibbert
+*   url:        http://nicolahibbert.com/liteaccordion-v2/
+*   demo:       http://www.nicolahibbert.com/demo/liteAccordion/
+*
+*   Version:    2.0.2
+*   Copyright:  (c) 2010-2011 Nicola Hibbert
+*   Licence:    MIT
+*
+*   Edited by: Ru Santos
+*
+**************************************************/
+/****************************************** Core */
+.accordion { text-align: left; font: 'Helvetica Neue', Verdana, Arial, sans-serif }
+.accordion > ol { position: relative; overflow: hidden; height: 100%; margin: 0; padding: 0; list-style-type: none }
+.accordion .slide > h2 { 
+	color: black;
+    font-size: 16px;	 
+	font-weight: normal;
+	margin: 0; 
+	z-index: 100; 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	-webkit-transform: translateX(-100%) rotate(-90deg); 
+	-webkit-transform-origin: right top; 
+	-moz-transform: translateX(-100%) rotate(-90deg);
+	-moz-transform-origin: right top; 
+	-o-transform: translateX(-100%) rotate(-90deg); 
+	-o-transform-origin: right top; 
+	transform: translateX(-100%) rotate(-90deg); 
+	transform-origin: right top;
+	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); 
+}
+.accordion .slide > h2 span { 
+    display: block; 
+    padding-right: 10%; 
+    text-align: right; 
+    height: 100%;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+.accordion .slide > h2 b { 
+    display: inline-block; 
+    position: absolute; 
+    top: 13%; 
+    left: 0%; 
+    text-align: center; 
+    -webkit-transform: rotate(90deg); 
+    -moz-transform: rotate(90deg); 
+    -o-transform: rotate(90deg); 
+    transform: rotate(90deg);
+	-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+.accordion .slide > h2:hover { cursor: pointer }
+.accordion .slide > div { height: 100%; position: absolute; padding:20px; top: 0; z-index: 10; overflow: hidden; background: #f7f7f7; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #f7f7f7 0%, #eaeae8 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#f7f7f7), color-stop(100%,#eaeae8)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  #f7f7f7 0%,#eaeae8 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  #f7f7f7 0%,#eaeae8 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  #f7f7f7 0%,#eaeae8 100%); /* IE10+ */
+background: radial-gradient(center, ellipse cover,  #f7f7f7 0%,#eaeae8 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#eaeae8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+ }
+.accordion noscript p { padding: 10px; margin: 0; background: #fbfbfb }
+
+/****************************************** Basic */
+.basic .slide > h2 { background: #eaeae8; color: white }
+
+.basic { 
+    background: #eaeae8; 
+        -webkit-box-shadow: 0px 0px 15px rgba(112,112,112,0.3);
+        -moz-box-shadow: 0px 0px 15px rgba(112,112,112,0.3);
+        -ms-box-shadow: 0px 0px 15px rgba(112,112,112,0.3);
+        -o-box-shadow: 0px 0px 15px rgba(112,112,112,0.3);
+	box-shadow: 0px 0px 15px rgba(112,112,112,0.3);
+}
+
+.basic .slide > h2 span {
+color: white;
+    background: #6d5d56; /* Old browsers */
+    background: -moz-linear-gradient(top, #6d5d56 1%, #998877 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#6d5d56), color-stop(100%,#998877)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #6d5d56 1%,#998877 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #6d5d56 1%,#998877 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #6d5d56 1%,#998877 100%); /* IE10+ */
+    background: linear-gradient(top, #6d5d56 1%,#998877 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d5d56', endColorstr='#998877',GradientType=0 ); /* IE6-9 */
+}
+
+
+.basic .slide > h2.selected span, .basic .slide > h2.selected span:hover { 
+    background: #11cccc; /* Old browsers */
+    background: -moz-linear-gradient(top, #11cccc 0%, #77e5e3 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#11cccc), color-stop(99%,#77e5e3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #11cccc 0%,#77e5e3 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #11cccc 0%,#77e5e3 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #11cccc 0%,#77e5e3 99%); /* IE10+ */
+    background: linear-gradient(top, #11cccc 0%,#77e5e3 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11cccc', endColorstr='#77e5e3',GradientType=0 ); /* IE6-9 */
+}
+
+/******************************************** IE */
+.ie .slide > h2 b { top: 42%; left: 5% }
+.ie9 .slide > h2 { filter: none; -ms-transform: translateX(-100%) rotate(-90deg); -ms-transform-origin: right top }

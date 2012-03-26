@@ -15,8 +15,11 @@ html, body
   padding-bottom: $footer_height  /* must be same height as the footer */
 
 .footer
+  font: 500 14px "Century Gothic","Avant Garde"
+  color: #707070
   position: relative
   margin-top: -$footer_height /* negative value of footer height */
+  padding-bottom: $footer_height
   height: $footer_height
   clear: both
 
@@ -28,27 +31,42 @@ body
   font-family: "PT Sans", "Tahoma","Geneva","Kalimati",sans-serif
 
 .header-landing
-  border-bottom: 15px solid #acacac
-
-.header-landing
   font-family: "Century Gothic", serif
-  height: 70px
-  background-color: #534741
+  height: 90px
+  background: #534741
+  border-bottom: 15px solid #acacac
   margin: 0 auto 20px
+
+  .header-inner
+    margin: 0 auto
+    width: 80%
+    padding: 10px
+    color: white
+    a, a:visited
+      color: white
 
 #landing
   height: 380px
-  padding-top: 30px
+  padding-top: 0px
+  position: absolute
+  top: 115px
 
 #landing-right
-  width: 270px
+  font: 500 14px "Century Gothic","Avant Garde"
+  color: #707070
+  width: 200px
   background-color: rgba(255, 255, 255, .5)
   padding: 30px
+  position: absolute
+  left: 460px
+  top: 150px
+  z-index: 50
   @include round-corners
 
 .emblem
-  padding: 80px 20px
+  padding: 0px 20px
   float: right
+  z-index: 100
 
 .center
   text-align: center
@@ -72,4 +90,3 @@ label
   background-color: white
   padding: 10px
   @include trans-gradient
-
