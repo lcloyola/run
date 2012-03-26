@@ -2,10 +2,15 @@
 .container-fluid
   .row-fluid
     .span4
-      %h5 Team members
+      %br
+      %h3 Team members
       %ul
       - @team.members.each do |m|
         %li= m.user.fullname
+      %br
+      %br
+      %br
+      %br=link_to'Back','/performances/index'
     .span7
       #gallery_container2.ad-gallery{:style => "text-align: center; margin: 0 auto;"}
         .ad-nav
@@ -18,3 +23,5 @@
                     %li
                       %a#gallery{:rel=> "lightbox-graphs", :href => @line.to_url, :title => "Time per Repetitions; #{a.user.fullname}"}
                         = image_tag @line.to_url, :width => 200
+                        
+    
