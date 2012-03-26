@@ -39,7 +39,7 @@
                     | Log-in |
                 %div
                   %center
-                    = yield
+                    = render '/devise/sessions/new'
                   .clear
                     
               %li{:name => "signup"}
@@ -47,6 +47,9 @@
                   %span
                     | Sign-up |
                 %div
+                  %center
+                    = render '/myregistrations/new'                  
+                    
 
     %footer.footer
       .center &copy; #{Time.now.year} teamRUN (Cola, Loyola, Pineda, Santos)

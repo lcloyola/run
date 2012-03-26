@@ -1,0 +1,21 @@
+<div class="center">
+<h1 style="text-align: center; color: #707070">Log-in</h1>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-stacked"}) do |f| %>
+  <%= devise_error_messages! %>
+  <br>
+  <div>
+  <%= f.email_field :email, :placeholder => 'email' %></div>
+
+  <div>
+  <%= f.password_field :password, :placeholder => 'password' %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me%><b>Remember me</b></div>
+  <% end -%>
+<br>
+  <%= f.submit "Sign in", :class=>'button-gray'%></div>
+<% end %>
+<hr>
+<div class="center">
+  <%= render :partial => "devise/shared/links" %>
+</div>
