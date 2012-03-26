@@ -5,8 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_coach, :is_athlete, :coach_id, :first, :last, :about, :as_coach
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_coach, :is_athlete, :coach_id, :first, :last, :about, :as_coach, :photo_file_name, :photo_content_type, :photo_file_size, :photo
 
+has_attached_file :photo,
+  :styles => {
+    :thumb=> "40x40>",
+    :small  => "150x150>",
+    :medium => "300x300>",
+    :large =>   "400x400>" }
+    
   has_many :members, :foreign_key => :user_id, :dependent => :destroy
   has_many :teams, :through => :members, :source => :team, :dependent => :destroy
   has_many :categories

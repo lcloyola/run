@@ -1,10 +1,8 @@
 .header-inner
   = link_to image_tag('logos.png'), root_path
   .dash
-    - if current_user.is_coach
-      = image_tag('smiley.jpg', :style => 'width: 40px; height: 40px; vertical-align: middle;')
-    -else
-      = image_tag('hotsmiley.gif', :style => 'width: 40px; height: 40px; vertical-align: middle;')
+    -if current_user.photo.exists? then
+      = image_tag current_user.photo.url(:thumb), :width => 40
     &nbsp;
     = link_to current_user.email, edit_user_registration_path
     = link_to '| Logout ', destroy_user_session_path, :method => :delete

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324191650) do
+ActiveRecord::Schema.define(:version => 20120326012328) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -106,6 +106,9 @@ ActiveRecord::Schema.define(:version => 20120324191650) do
     t.string   "middle"
     t.text     "about"
     t.boolean  "as_coach"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
