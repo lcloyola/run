@@ -35,7 +35,8 @@
               %td= template.category.name
               %td= link_to 'Show', template
               %td= link_to 'Edit', edit_template_path(template)
-              %td= link_to 'Destroy', template, :confirm => 'Are you sure?', :method => :delete
+              - if template.tsession.empty?
+                %td= link_to 'Destroy', template, :confirm => 'Are you sure?', :method => :delete
 #a{:style=>"clear:both"}
          
  

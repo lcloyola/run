@@ -31,7 +31,8 @@
                 %td= session.comments
                 %td= link_to 'Show', session
                 %td= link_to 'Edit', edit_tsession_path(session)
-                %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
+                - unless session.is_done?
+                  %td= link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
       #done
         %table
           %tr
